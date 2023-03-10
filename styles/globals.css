@@ -8,3 +8,28 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+@layer components {
+  body {
+    @apply bg-creem-green ;
+  }
+  .btn-green {
+    @apply bg-light-green px-7 py-2 rounded-md text-creem-green;
+  }
+  .btn-border-yellow {
+    @apply border-2 border-light-green text-light-green px-7 py-2 rounded-md  cursor-pointer hover:bg-yellow-300  hover:text-black;
+  }
+}
+
+.downMenu {
+  animation-name: downMenuanimation;
+  animation-duration: 1s;
+  overflow: hidden;
+}
+@keyframes downMenuanimation {
+  0% {
+    height: 0px;
+  }
+  100% {
+    height: 200px;
+  }
+}
