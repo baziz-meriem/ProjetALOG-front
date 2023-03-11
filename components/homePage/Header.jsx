@@ -1,13 +1,13 @@
 import Image from "next/image";
 const Header = () => {
   return (
-    <div className="h-screen w-full relative">
+    <div className="h-screen w-full relative overflow-hidden">
       <Image
         src="/images/lFlowers.png"
-        width={310}
+        width={350}
         height="100"
         alt="exaview logo"
-        className="absolute top-0 letf-0"
+        className="absolute -top-10 -left-10"
       ></Image>
       <Image
         src="/images/rFlowers.png"
@@ -23,6 +23,7 @@ const Header = () => {
           <div className="md:text-md text-sm  mt-5">
             Effortlessly Monitor Your Vending Business with Real-Time
             Performance Metrics.
+            add some text here becuase we need more 
           </div>
           <button className="btn-green mt-5 md:text-lg text-sm px-10 font-semibold">
             Start Now

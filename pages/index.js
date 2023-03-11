@@ -4,6 +4,10 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import NavBar from "@/components/shared/NavMenu";
 import Header from "@/components/homePage/Header";
+import HowItWorks from "@/components/homePage/HowItWorks";
+import HowHelp from "@/components/homePage/HowHelp";
+import Contact from "@/components/homePage/Contact";
+import Footer from "@/components/shared/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,6 +23,10 @@ export default function Home() {
       <main className="">
         <NavBar />
         <Header/>
+        <HowItWorks/>
+        <HowHelp/>
+        <Contact/>
+        <Footer/>
       </main>
     </>
   );
