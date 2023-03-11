@@ -2,13 +2,7 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faSearch,
-  faUser,
-  faArrowAltCircleRight,
-  faRightFromBracket,
-} from "@fortawesome/free-solid-svg-icons";
+
 
 const NavBar = () => {
   const router = useRouter();
