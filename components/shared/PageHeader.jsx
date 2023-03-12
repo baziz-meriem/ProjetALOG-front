@@ -14,7 +14,7 @@ const PageHeader = ({ title, description }) => {
         <FontAwesomeIcon icon={faBell} className="text-2xl mx-4 mt-2" />
         <div className=" w-10 h-10 rounded-full relative overflow-hidden">
           <Image
-            src="/images/ouael.png"
+            src="/images/user.png"
             width={100}
             height="100"
             alt="exaview logo"
