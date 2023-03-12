@@ -3,7 +3,6 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-
 const NavBar = () => {
   const router = useRouter();
   const [activePage, setActivePage] = useState(0);
@@ -14,7 +13,7 @@ const NavBar = () => {
     },
     {
       name: "Dashboard",
-      href: "/dashbord",
+      href: "/dashboard",
     },
     {
       name: "About",
