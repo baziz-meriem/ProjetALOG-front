@@ -77,7 +77,7 @@ const SideBar = () => {
                 : ""
             } text-white px-3 py-3 rounded-md my-3 font-md flex`}
           >
-            <FontAwesomeIcon icon={link.icon} color="white" className="mt-1" />
+            <FontAwesomeIcon icon={link.icon} color="white" className="text-sm" width="15" />
             <Link href={link.link} className="ml-2">
               {" "}
               {link.name}
