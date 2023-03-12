@@ -1,7 +1,13 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome ,faBell , faUsers  , faHardDrive , faUser} from "@fortawesome/free-solid-svg-icons";
+import {
+  faHome,
+  faBell,
+  faUsers,
+  faHardDrive,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
 const SideBar = () => {
@@ -14,35 +20,35 @@ const SideBar = () => {
       icon: faHome,
     },
     {
-        id: 2,
-        name: "Notifications",
-        link: "/notifications",
-        icon: faBell,
-      },
-      {
-        id: 3,
-        name: "Gestion des comptes",
-        link: "/comptes",
-        icon: faUsers,
-      },
-      {
-        id: 4,
-        name: "Nos distributeurs",
-        link: "/distributeurs",
-        icon: faHardDrive,
-      },
-      {
-        id: 1,
-        name: "Mon profil",
-        link: "/profile",
-        icon: faUser,
-      },
-      {
-        id: 1,
-        name: "Logout",
-        link: "/logout",
-        icon: faHome,
-      },
+      id: 2,
+      name: "Notifications",
+      link: "/notifications",
+      icon: faBell,
+    },
+    {
+      id: 3,
+      name: "Gestion des comptes",
+      link: "/comptes",
+      icon: faUsers,
+    },
+    {
+      id: 4,
+      name: "Nos distributeurs",
+      link: "/distributeurs",
+      icon: faHardDrive,
+    },
+    {
+      id: 1,
+      name: "Mon profil",
+      link: "/profile",
+      icon: faUser,
+    },
+    {
+      id: 1,
+      name: "Logout",
+      link: "/logout",
+      icon: faHome,
+    },
   ];
   return (
     <div className="px-5 py-14">
@@ -66,11 +72,16 @@ const SideBar = () => {
         {Links.map((link, key) => (
           <div
             className={`${
-              router.pathname == link.link ? "bg-dark-green font-medium cursor-pointer" : ""
+              router.pathname == link.link
+                ? "bg-dark-green font-medium cursor-pointer"
+                : ""
             } text-white px-3 py-3 rounded-md my-3 font-md flex`}
           >
             <FontAwesomeIcon icon={link.icon} color="white" className="mt-1" />
-            <Link href={link.link} className="ml-2"> {link.name}</Link>
+            <Link href={link.link} className="ml-2">
+              {" "}
+              {link.name}
+            </Link>
           </div>
         ))}
       </div>
