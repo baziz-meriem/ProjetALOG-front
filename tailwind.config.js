@@ -19,7 +19,8 @@ module.exports = {
       },
       boxShadow: {
         'all': '0 0,0 0 1em rgba(0, 0, 0, 0.14)',
-      }
+      },
+
     },
   },
   plugins: [],

@@ -10,18 +10,38 @@ const createAC = () => {
       <div className="h-full w-full relative overflow-y-hidden flex flex-row">
           <div className="w-1/2 m-4">
             <div className="space-y-10 mt-16">
-              <CustomSelect label="Nom" options={options}/>
-              <CustomSelect label="Email" options={options}/>
-              <CustomSelect label="Client" options={options}/>
+            <CustomSelect label="Client" options={options}/>
+              <input
+              type="text"
+              class="p-5 inputs bg-effect shadow-all text-grey "
+              placeholder="Enter le nom"
+            ></input>
+              <input
+              type="text"
+              class="p-5 inputs bg-effect shadow-all text-grey "
+              placeholder="Enter l'email"
+            ></input>
             </div>
 
           </div>
           
           <div className="w-1/2 m-4">
             <div className="space-y-10 mt-16">
-              <CustomSelect label="Prénom" options={options}/>
-              <CustomSelect label="Numéro de Télephone" options={options}/>
-              <CustomSelect label="Code deverouillage" options={options}/>
+            <input
+              type="text"
+              class="p-5 inputs bg-effect shadow-all text-grey "
+              placeholder="Enter le prénom"
+            ></input>
+              <input
+              type="text"
+              class="p-5 inputs bg-effect shadow-all text-grey "
+              placeholder="Enter le numéro de télephone"
+            ></input>
+              <input
+              type="text"
+              class="p-5 inputs bg-effect shadow-all text-grey "
+              placeholder="Enter le Code de Dévérouillage"
+            ></input>
               <div className="flex justify-end">
                 <button class="btn-green px-11 py-2.5 mt-4 light-grey">
                   Ajouter l'Agent de maintenance
