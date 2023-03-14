@@ -4,10 +4,10 @@ import Image from "next/image";
 
 const index = () => {
   return (
-    <div>
+    <div className="h-full w-full overflow-hidden">
       <PageHeader title="Profile page" description="Some description here" />
-      <div className="h-screen w-full relative overflow-hidden flex flex-row">
-        <div class="w-1/2 m-14">
+      <div className=" relative  flex flex-row">
+        <div class="w-1/2">
           <div className="space-y-10 mt-16 ">
             <div className="flex items-center justify-center rounded-full overflow-hidden relative w-48 h-48 mx-auto">
               <Image
@@ -25,7 +25,7 @@ const index = () => {
             </div>
           </div>
         </div>
-        <div class="w-1/2 my-14  mx-16 ">
+        <div class="w-1/2  mx-16 ">
         
           <div className="space-y-4 mt-16 ">
             <input

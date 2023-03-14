@@ -18,7 +18,7 @@ module.exports = {
         "light-grey":"#F2F8F2"
       },
       boxShadow: {
-        'all': '0 0,0 0 2em rgba(0, 0, 0, 0.14)',
+        'all': '0 0,0 0 1em rgba(0, 0, 0, 0.14)',
       }
     },
   },
