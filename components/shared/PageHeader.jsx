@@ -8,7 +8,7 @@ const PageHeader = ({ title, description }) => {
     <div className="flex justify-between">
       <div>
         <div className="text-4xl font-bold">{title}</div>{" "}
-        <div className="text-gray-500 mt-1">{description}</div>
+        <div className="text-gray-500 mt-1 text-grey">{description}</div>
       </div>
       <div className="flex">
         <FontAwesomeIcon icon={faBell} className="text-2xl mx-4 mt-2" />
