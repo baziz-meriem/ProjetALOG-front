@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Image from "next/image";
 
-function CustomSelect({ options }) {
-  const [selectedOption, setSelectedOption] = useState(options[0]);
+function CustomSelect({ label,options }) {
+  const [selectedOption, setSelectedOption] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOptionClick = (option) => {
@@ -28,7 +28,7 @@ function CustomSelect({ options }) {
           aria-expanded="true"
           onClick={handleSelectClick}
         >
-          {selectedOption}
+          {selectedOption !== null ? selectedOption : label}
           <Image
             src="/icons/arrow.svg"
             width={25}
