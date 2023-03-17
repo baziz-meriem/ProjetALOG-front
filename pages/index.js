@@ -21,12 +21,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="">
+        <h1>ouael</h1>
         <NavBar />
         <Header/>
         <HowItWorks/>
         <HowHelp/>
         <Contact/>
         <Footer/>
+        {/* <h1>welcome to next</h1> */}
       </main>
     </>
   );
