@@ -11,9 +11,9 @@ jobs:
        run: npm install
      - name: Build Project assets
        run: npm run build  
-     name: test project
-     runs-on: ubuntu-latest
   test-project:
+     name: Build project
+     runs-on: ubuntu-latest
      steps: 
      - name: checkout code
        uses: actions/checkout@v3
