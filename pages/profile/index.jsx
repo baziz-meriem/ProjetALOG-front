@@ -1,8 +1,18 @@
 import PageHeader from "@/components/shared/PageHeader";
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 const index = () => {
+  const [profileData, setProfile] = useState({
+    nom: "Sahbi",
+    prenom: "Ouael Nedjem eddine",
+    email: "jo_sahbi@esi.dz",
+    numTel: "0795951519",
+  });
+
+  const handleChange = (e) => {
+    setProfile({ ...profileData, [e.target.name]: e.target.value });
+  };
   return (
     <div className="h-full w-full overflow-hidden">
       <PageHeader title="Profile page" description="Some description here" />
@@ -26,27 +36,46 @@ const index = () => {
           </div>
         </div>
         <div class="w-1/2  mx-16 ">
-        
           <div className="space-y-4 mt-16 ">
             <input
               type="text"
-              class="p-3.5 inputs bg-effect shadow-all text-grey "
+              class="p-3.5 inputs bg-effect shadow-all  "
               placeholder="Enter your first name"
+              value={profileData.nom}
+              name ="nom"
+              onChange={(e) => {
+                handleChange(e);
+              }}
             ></input>
             <input
               type="text"
-              class="p-3.5 inputs bg-effect shadow-all text-grey "
-              placeholder="Enter your last name"
+              class="p-3.5 inputs bg-effect shadow-all "
+              placeholder={profileData.prenom}
+              value={profileData.prenom}
+              name="prenom"
+              onChange={(e) => {
+                handleChange(e);
+              }}
             ></input>
             <input
               type="text"
-              class="p-3.5 inputs bg-effect shadow-all text-grey "
+              class="p-3.5 inputs bg-effect shadow-all  "
               placeholder="Enter your email"
+              value={profileData.email}
+              name="email"
+              onChange={(e) => {
+                handleChange(e);
+              }}
             ></input>
             <input
               type="text"
-              class="p-3.5 inputs bg-effect shadow-all text-grey "
+              class="p-3.5 inputs bg-effect shadow-all "
               placeholder="Enter your phone number"
+              value={profileData.numTel}
+              name="numTel"
+              onChange={(e) => {
+                handleChange(e);
+              }}
             ></input>
             <div className="flex justify-end">
               <button class="btn-green px-11 py-2.5 mt-4 light-grey">

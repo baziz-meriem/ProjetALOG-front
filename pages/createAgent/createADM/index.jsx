@@ -1,38 +1,80 @@
-import CustomSelect from "@/components/loginPage/CustomSelect";
+import CustomInput from "@/components/loginPage/CustomInput";
 import PageHeader from "@/components/shared/PageHeader";
-import React from "react";
+import React, { useState } from "react";
 
 const createADM = () => {
-  const options=["option1","option2","option3","option4","option14","option22","option31","option41","option10","option20","option30","option24"]
+  const [data, setData] = useState({
+    nom: null,
+    prenom: null,
+    password: null, // To generated
+    mail: null,
+    numTel: null,
+    idClient: null, // will get it from the session
+  });
+  const handleSubmit = () => {
+    console.log(data);
+  };
+  const options = ["option1", "option2", "option3"];
   return (
     <div className="">
-      <PageHeader title="Ajouter un Administrateur des distributeurs" description="Donner les informations générales de l'Administrateur des distributeurs du client" />
+      <PageHeader
+        title="Ajouter un ADM"
+        description="Donner les informations générales de l'agent Commerciale"
+      />
       <div className="h-full w-full relative overflow-y-hidden flex flex-row">
-          <div className="w-1/2 m-4">
-            <div className="space-y-10 mt-16">
-            <CustomSelect label="Client" options={options}/>
-              <CustomSelect label="Prénom" options={options}/>
-              <CustomSelect label="Email" options={options}/>
-            </div>
-
+        <div className="w-1/2 m-4">
+          <div className="space-y-10 mt-16">
+            <CustomInput
+              label="Nom"
+              options={options}
+              steFunction={setData}
+              attr="nom"
+              data={data}
+              type="text"
+            />
+            <CustomInput
+              label="Email"
+              options={options}
+              steFunction={setData}
+              attr="mail"
+              data={data}
+              type="email"
+            />
           </div>
-          
-          <div className="w-1/2 m-4">
-            <div className="space-y-10 mt-16">
-              <CustomSelect label="Nom" options={options}/>
-              <CustomSelect label="Numéro de Télephone" options={options}/>
-              <div className="flex justify-end">
-                <button class="btn-green px-11 py-2.5 mt-4 light-grey">
-                  Ajouter l'Administrateur des distributeurs 
-                  
-                </button>
-              </div>
-            </div>
+        </div>
 
+        <div className="w-1/2 m-4">
+          <div className="space-y-10 mt-16">
+            <CustomInput
+              label="Prénom"
+              options={options}
+              steFunction={setData}
+              attr="prenom"
+              data={data}
+              type="text"
+            />
+            <CustomInput
+              label="Numéro de télphone"
+              options={options}
+              steFunction={setData}
+              attr="numTel"
+              data={data}
+              type="number"
+            />
+
+            <div className="flex justify-end">
+              <button
+                class="btn-green px-11 py-2.5 mt-4 light-grey"
+                onClick={() => {
+                  handleSubmit();
+                }}
+              >
+                Ajouter ADM
+              </button>
+            </div>
           </div>
+        </div>
       </div>
-
-
     </div>
   );
 };

@@ -7,9 +7,9 @@ const Dashboard = () => {
     <div className="h-4/6 w-full">
       <PageHeader title="Dashboard" description="Welcome, Ouael!" />
       <div className="grid grid-cols-3 gap-x-4 w-full ">
-        <Card title="Nombre de Distributeurs" stats="202" />
-        <Card title="Nombre de Clients" stats="301" color="creem-green"/>
-        <Card title="Nombre de Distributeurs" stats="202" />
+        <Card title="Nombre de Distributeurs" stats="202" link='/AddDistributeur' />
+        <Card title="Nombre de Clients" stats="301" color="creem-green" link=''/>
+        <Card title="Nombre de Distributeurs" stats="202"  link=''/>
       </div>
       <div className=" flex flex-row gap-x-6 w-full h-full  ">
       <div className=" w-1/2 h-full">

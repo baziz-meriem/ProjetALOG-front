@@ -1,13 +1,14 @@
 import { useState } from "react";
 import Image from "next/image";
 
-function CustomSelect({ label,options }) {
+function CustomSelect({ label, options, steFunction, attr, data }) {
   const [selectedOption, setSelectedOption] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOptionClick = (option) => {
     setSelectedOption(option);
     setIsOpen(false);
+    steFunction({ ...data, [attr]: option });
   };
 
   const handleSelectClick = () => {

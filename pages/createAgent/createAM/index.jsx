@@ -1,60 +1,82 @@
-import CustomSelect from "@/components/loginPage/CustomSelect";
+import CustomInput from "@/components/loginPage/CustomInput";
 import PageHeader from "@/components/shared/PageHeader";
-import React from "react";
+import React, { useState } from "react";
 
-const createAC = () => {
-  const options=["option1","option2","option3","option4","option14","option22","option31","option41","option10","option20","option30","option24"]
+const createAM = () => {
+  const [data, setData] = useState({
+    nom: null,
+    prenom: null,
+    password: null, // To generated
+    mail: null,
+    numTel: null,
+    idClient: null, // will get it from the session
+  });
+  const handleSubmit = () => {
+    console.log(data);
+  };
+  const options = ["option1", "option2", "option3"];
   return (
     <div className="">
-      <PageHeader title="Ajouter un Agent de Maintenance" description="Donner les informations générales de l'agent de maintenance" />
+      <PageHeader
+        title="Ajouter un Agent Maintenance"
+        description="Donner les informations générales de l'agent Commerciale"
+      />
       <div className="h-full w-full relative overflow-y-hidden flex flex-row">
-          <div className="w-1/2 m-4">
-            <div className="space-y-10 mt-16">
-            <CustomSelect label="Client" options={options}/>
-              <input
+        <div className="w-1/2 m-4">
+          <div className="space-y-10 mt-16">
+            <CustomInput
+              label="Nom"
+              options={options}
+              steFunction={setData}
+              attr="nom"
+              data={data}
               type="text"
-              class="p-5 inputs bg-effect shadow-all text-grey "
-              placeholder="Enter le nom"
-            ></input>
-              <input
-              type="text"
-              class="p-5 inputs bg-effect shadow-all text-grey "
-              placeholder="Enter l'email"
-            ></input>
-            </div>
-
+            />
+            <CustomInput
+              label="Email"
+              options={options}
+              steFunction={setData}
+              attr="mail"
+              data={data}
+              type="email"
+            />
           </div>
-          
-          <div className="w-1/2 m-4">
-            <div className="space-y-10 mt-16">
-            <input
-              type="text"
-              class="p-5 inputs bg-effect shadow-all text-grey "
-              placeholder="Enter le prénom"
-            ></input>
-              <input
-              type="text"
-              class="p-5 inputs bg-effect shadow-all text-grey "
-              placeholder="Enter le numéro de télephone"
-            ></input>
-              <input
-              type="text"
-              class="p-5 inputs bg-effect shadow-all text-grey "
-              placeholder="Enter le Code de Dévérouillage"
-            ></input>
-              <div className="flex justify-end">
-                <button class="btn-green px-11 py-2.5 mt-4 light-grey">
-                  Ajouter l'Agent de maintenance
-                </button>
-              </div>
-            </div>
+        </div>
 
+        <div className="w-1/2 m-4">
+          <div className="space-y-10 mt-16">
+            <CustomInput
+              label="Prénom"
+              options={options}
+              steFunction={setData}
+              attr="prenom"
+              data={data}
+              type="text"
+            />
+            <CustomInput
+              label="Numéro de télphone"
+              options={options}
+              steFunction={setData}
+              attr="numTel"
+              data={data}
+              type="number"
+            />
+
+            <div className="flex justify-end">
+              <button
+                class="btn-green px-11 py-2.5 mt-4 light-grey"
+                onClick={() => {
+                  handleSubmit();
+                }}
+              >
+                Ajouter AM
+              </button>
+            </div>
           </div>
+        </div>
       </div>
-
-
     </div>
   );
 };
 
-export default createAC;
+export default createAM;
