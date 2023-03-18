@@ -5,7 +5,6 @@ import React, { useState } from "react";
 const createADM = () => {
   const [data, setData] = useState({
     nom: null,
-    prenom: null,
     password: null, // To generated
     mail: null,
     numTel: null,
@@ -21,7 +20,7 @@ const createADM = () => {
         title="Ajouter un ADM"
         description="Donner les informations générales de l'agent Commerciale"
       />
-      <div className="h-full w-full relative overflow-y-hidden flex flex-row">
+      <div className="h-full w-full relative overflow-y-hidden flex flex-wrap">
         <div className="w-1/2 m-4">
           <div className="space-y-10 mt-16">
             <CustomInput
@@ -40,20 +39,7 @@ const createADM = () => {
               data={data}
               type="email"
             />
-          </div>
-        </div>
-
-        <div className="w-1/2 m-4">
-          <div className="space-y-10 mt-16">
-            <CustomInput
-              label="Prénom"
-              options={options}
-              steFunction={setData}
-              attr="prenom"
-              data={data}
-              type="text"
-            />
-            <CustomInput
+             <CustomInput
               label="Numéro de télphone"
               options={options}
               steFunction={setData}
@@ -61,6 +47,14 @@ const createADM = () => {
               data={data}
               type="number"
             />
+          </div>
+        </div>
+
+
+      </div>
+      <div className="w-1/2 m-4">
+          <div className="space-y-10 mt-16">
+
 
             <div className="flex justify-end">
               <button
@@ -74,7 +68,6 @@ const createADM = () => {
             </div>
           </div>
         </div>
-      </div>
     </div>
   );
 };

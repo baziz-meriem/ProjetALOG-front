@@ -2,7 +2,7 @@ import CustomInput from "@/components/loginPage/CustomInput";
 import PageHeader from "@/components/shared/PageHeader";
 import React, { useState } from "react";
 
-const CreateDecideur = () => {
+const createClient = () => {
   const [data, setData] = useState({
     nom: null,
     password: null, // To generated
@@ -17,8 +17,8 @@ const CreateDecideur = () => {
   return (
     <div className="">
       <PageHeader
-        title="Ajouter un Decideur"
-        description="Donner les informations générales de l'agent Commerciale"
+        title="Ajouter un Nouveau Client"
+        description="Donner les informations générales du client"
       />
       <div className="h-full w-full relative overflow-y-hidden flex flex-row">
         <div className="w-1/2 m-4">
@@ -60,7 +60,7 @@ const CreateDecideur = () => {
                   handleSubmit();
                 }}
               >
-                Ajouter Decideur
+                Ajouter le Client
               </button>
             </div>
           </div>
@@ -70,4 +70,4 @@ const CreateDecideur = () => {
   );
 };
 
-export default CreateDecideur;
+export default createClient;
