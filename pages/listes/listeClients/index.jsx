@@ -4,7 +4,7 @@ import ListRow from "@/components/lists/ListRow";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const listeClients = () => {
+const ListeClients = () => {
   useEffect(() => {
     if (!Data) {
       axios
@@ -48,4 +48,4 @@ const listeClients = () => {
   );
 };
 
-export default listeClients;
+export default ListeClients;
