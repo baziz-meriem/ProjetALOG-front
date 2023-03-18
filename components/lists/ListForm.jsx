@@ -54,7 +54,7 @@ const ListForm = () => {
                 size="small"
               />
                 <button
-                  class="btn-green px-11 py-2.5 light-grey"
+                  className="btn-green px-11 py-2.5 light-grey"
                 >
                   Ajouter
                 </button>
@@ -72,7 +72,7 @@ const ListForm = () => {
               />
         </div>
              <button
-                class="btn-green px-11 py-2.5 light-grey "
+                className="btn-green px-11 py-2.5 light-grey "
               >
                 Affecter
               </button>

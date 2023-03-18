@@ -74,7 +74,7 @@ const AddDistributeur = () => {
             />
             <div className="flex justify-end">
               <button
-                class="btn-green px-11 py-2.5 mt-4 light-grey"
+                className="btn-green px-11 py-2.5 mt-4 light-grey"
                 onClick={() => {
                   submitData();
                 }}

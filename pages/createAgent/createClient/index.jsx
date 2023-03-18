@@ -2,7 +2,9 @@ import CustomInput from "@/components/loginPage/CustomInput";
 import PageHeader from "@/components/shared/PageHeader";
 import React, { useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/router";
 const createClient = () => {
+  const router = useRouter() ; 
   const [data, setData] = useState({
     nom: null,
     email: null,
@@ -15,7 +17,7 @@ const createClient = () => {
         "https://sitandlipapi.onrender.com/api/v1/profileManagement/client",
         data
       )
-      .then((res) => console.log(res));
+      .then((res) => {console.log(res) ;router.push('/listes/listeClients') });
   };
   const options = ["option1", "option2", "option3"];
   return (
@@ -59,7 +61,7 @@ const createClient = () => {
 
             <div className="flex justify-end">
               <button
-                class="btn-green px-11 py-2.5 mt-4 light-grey"
+                className="btn-green px-11 py-2.5 mt-4 light-grey"
                 onClick={() => {
                   handleSubmit();
                 }}
