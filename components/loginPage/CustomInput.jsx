@@ -10,6 +10,7 @@ const CustomInput = ({ label, type, steFunction, attr, data ,size}) => {
   if(size=="small"){
    padding = "3"
   } else padding="5"
+  
 
   return (
     <div
