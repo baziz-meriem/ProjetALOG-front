@@ -14,7 +14,7 @@ const CustomInput = ({ label, type, steFunction, attr, data }) => {
         className="bg-transparent w-full outline-none"
         type={type}
         onChange={(e) => {
-          handleChange(e);
+          handleChange(e); 
         }}
       />
     </div>
