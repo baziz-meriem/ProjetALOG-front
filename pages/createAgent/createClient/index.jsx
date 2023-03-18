@@ -5,7 +5,6 @@ import React, { useState } from "react";
 const createClient = () => {
   const [data, setData] = useState({
     nom: null,
-    prenom: null,
     password: null, // To generated
     mail: null,
     numTel: null,
@@ -45,14 +44,6 @@ const createClient = () => {
 
         <div className="w-1/2 m-4">
           <div className="space-y-10 mt-16">
-            <CustomInput
-              label="Prénom"
-              options={options}
-              steFunction={setData}
-              attr="prenom"
-              data={data}
-              type="text"
-            />
             <CustomInput
               label="Numéro de télphone"
               options={options}
