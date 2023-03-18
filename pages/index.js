@@ -10,10 +10,8 @@ import Contact from "@/components/homePage/Contact";
 import Footer from "@/components/shared/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
-import axios from "axios";
 
 export default function Home() {
-  axios.get("https://sitandlipapi.onrender.com/api/v1/profileManagement/client/22").then((res)=>console.log(res))
   return (
     <>
       <Head>
@@ -29,7 +27,6 @@ export default function Home() {
         <HowHelp/>
         <Contact/>
         <Footer/>
-        {/* <h1>welcome to next</h1> */}
       </main>
     </>
   );
