@@ -10,8 +10,10 @@ import Contact from "@/components/homePage/Contact";
 import Footer from "@/components/shared/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
+import axios from "axios";
 
 export default function Home() {
+  axios.get("https://sitandlipapi.onrender.com/api/v1/profileManagement/client/22").then((res)=>console.log(res))
   return (
     <>
       <Head>
@@ -21,7 +23,6 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="">
-        <h1>ouael</h1>
         <NavBar />
         <Header/>
         <HowItWorks/>

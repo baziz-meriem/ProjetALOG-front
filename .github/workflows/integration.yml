@@ -12,7 +12,7 @@ jobs:
      - name: Build Project assets
        run: npm run build  
   test-project:
-     name: Build project
+     name: Test project
      runs-on: ubuntu-latest
      steps: 
      - name: checkout code
