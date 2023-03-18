@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Image from "next/image";
+import PropTypes from "prop-types";
 
-function CustomSelect({ label, options, steFunction, attr, data }) {
+function CustomSelect({ label, options, steFunction, attr, data,size }) {
   const [selectedOption, setSelectedOption] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -18,13 +19,17 @@ function CustomSelect({ label, options, steFunction, attr, data }) {
   const handleOuterDivMouseLeave = () => {
     setIsOpen(false);
   };
+  let padding
+   if(size=="small"){
+    padding = "3"
+   } else padding = "5"
 
   return (
     <div className="" onMouseLeave={handleOuterDivMouseLeave}>
       <div className="text-left relative">
         <button
           type="button"
-          className={`w-full inline-flex justify-between rounded-xl border border-gray-300 shadow-all p-5 bg-transparent text-base text-grey capitalize font-medium text-gray-700  focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:ring-offset-2  `}
+          className={`w-full inline-flex justify-between rounded-xl border border-gray-300 shadow-all p-${padding} bg-transparent text-base text-grey capitalize font-medium text-gray-700  focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:ring-offset-2  `}
           aria-haspopup="true"
           aria-expanded="true"
           onClick={handleSelectClick}
@@ -60,4 +65,12 @@ function CustomSelect({ label, options, steFunction, attr, data }) {
   );
 }
 
+CustomSelect.propTypes = {
+  label:PropTypes.string.isRequired,
+  type:PropTypes.string.isRequired,
+  steFunction:PropTypes.func.isRequired,
+  attr: PropTypes.string.isRequired,
+  data: PropTypes.objectOf(PropTypes.string),
+  size: PropTypes.string,
+};
 export default CustomSelect;
