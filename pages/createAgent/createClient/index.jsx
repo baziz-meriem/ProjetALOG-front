@@ -1,17 +1,21 @@
 import CustomInput from "@/components/loginPage/CustomInput";
 import PageHeader from "@/components/shared/PageHeader";
 import React, { useState } from "react";
-
+import axios from "axios";
 const createClient = () => {
   const [data, setData] = useState({
     nom: null,
-    password: null, // To generated
-    mail: null,
+    email: null,
     numTel: null,
-    idClient: null, // will get it from the session
   });
   const handleSubmit = () => {
     console.log(data);
+    axios
+      .post(
+        "https://sitandlipapi.onrender.com/api/v1/profileManagement/client",
+        data
+      )
+      .then((res) => console.log(res));
   };
   const options = ["option1", "option2", "option3"];
   return (
@@ -35,7 +39,7 @@ const createClient = () => {
               label="Email"
               options={options}
               steFunction={setData}
-              attr="mail"
+              attr="email"
               data={data}
               type="email"
             />
@@ -50,7 +54,7 @@ const createClient = () => {
               steFunction={setData}
               attr="numTel"
               data={data}
-              type="number"
+              type="text"
             />
 
             <div className="flex justify-end">
