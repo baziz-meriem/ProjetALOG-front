@@ -11,4 +11,14 @@ jobs:
        run: npm install
      - name: Build Project assets
        run: npm run build  
+  test-project:
+     name: Test project
+     runs-on: ubuntu-latest
+     steps: 
+     - name: checkout code
+       uses: actions/checkout@v3
+     - name: Install npm dependencies
+       run: npm install
+     - name: run the test 
+       run: npm run test 
   
