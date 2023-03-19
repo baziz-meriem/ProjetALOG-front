@@ -1,6 +1,13 @@
 import Image from "next/image";
+import {React,useState} from "react";
 
-const boissonCard = () => {
+const boissonCard = ({data}) => {
+  const [isAdded, setIsAdded] = useState(false);
+
+  const handleAddToService = () => {
+    setIsAdded(!isAdded);
+  };
+
   return (
     <div className="p-6 mt-6 bg-white drop-shadow-md shadow-all rounded-lg relative">
     <Image
@@ -12,7 +19,7 @@ const boissonCard = () => {
     ></Image>
     <div className="relative">
         <Image
-          src="/icons/coffee.svg"
+          src={data.image}
           width={150}
           height="150"
           alt="coffee"
@@ -28,7 +35,7 @@ const boissonCard = () => {
     </div>
 
     <div className="flex justify-center gap-6">
-      <h1 className="text-lg">Coffee</h1>
+      <h1 className="text-lg">{data.label}</h1>
       <Image
         src="/icons/edit.svg"
         width={20}
@@ -38,7 +45,7 @@ const boissonCard = () => {
     </div>
 
     <div className="flex justify-center gap-6 mb-8">
-      <h1 className="text-lg ">50 DA</h1>
+      <h1 className="text-lg ">{data.prix} DA</h1>
       <Image
         src="/icons/edit.svg"
         width={20}
@@ -48,12 +55,13 @@ const boissonCard = () => {
     </div>
 
     <div className="flex justify-center items-center gap-6 absolute bottom-3 right-3">
-      <h1 className="text-lg text-light-green">Add to Service</h1>
+      <h1 className={`text-md ${isAdded ? 'text-light-green' : 'text-red-500'}`}>{isAdded ? 'Add to service' : 'Remove from service'}</h1>
       <Image
-        src="/icons/AddIcon-green.svg"
-        width={40}
-        height="40"
+        src={isAdded ? "/icons/AddIcon-green.svg" : "/icons/remove.svg"}
+        width={35}
+        height="35"
         alt="add"
+        onClick={handleAddToService}
       ></Image>
     </div>
   </div>
