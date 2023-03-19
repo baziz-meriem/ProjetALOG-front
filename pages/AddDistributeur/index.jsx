@@ -10,6 +10,7 @@ const AddDistributeur = () => {
     etat: null,
     region: null,
     postion: null,
+    
   });
   const options = ["option1", "option2", "option3"];
 

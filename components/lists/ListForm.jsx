@@ -1,9 +1,10 @@
-import {React,useState} from "react";
+import {React,useEffect,useState} from "react";
 import CustomInput from "@/components/loginPage/CustomInput";
 import CustomSelect from "@/components/loginPage/CustomSelect";
 
 
 const ListForm = () => {
+
   const [data, setData] = useState({
     nom: null,
     prenom: null,
