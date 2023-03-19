@@ -24,7 +24,7 @@ const listeClients = () => {
             <ListHeader title="Clients"/>
             <ListRow key={Tablehead[0]} data={Tablehead} numColumns="6" toAdd=""/>
             {Data.map((rowData) => (
-           <ListRow key={rowData.id} data={rowData} numColumns="6" toAdd="ADMs"/>
+           <ListRow key={rowData.id} data={rowData} numColumns="6" toAdd="ADM"/>
           ))}
 
         </div>
