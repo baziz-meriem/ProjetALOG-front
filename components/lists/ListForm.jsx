@@ -1,9 +1,10 @@
-import {React,useState} from "react";
+import {React,useEffect,useState} from "react";
 import CustomInput from "@/components/loginPage/CustomInput";
 import CustomSelect from "@/components/loginPage/CustomSelect";
 
 
-const ListForm = ({agent}) => {
+const ListForm = () => {
+
   const [data, setData] = useState({
     nom: null,
     prenom: null,
@@ -54,7 +55,7 @@ const ListForm = ({agent}) => {
                 size="small"
               />
                 <button
-                  class="btn-green px-11 py-2.5 light-grey"
+                  className="btn-green px-11 py-2.5 light-grey"
                 >
                   Ajouter
                 </button>
@@ -72,7 +73,7 @@ const ListForm = ({agent}) => {
               />
         </div>
              <button
-                class="btn-green px-11 py-2.5 light-grey "
+                className="btn-green px-11 py-2.5 light-grey "
               >
                 Affecter
               </button>
