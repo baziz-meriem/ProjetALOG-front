@@ -10,6 +10,7 @@ const AddDistributeur = () => {
     etat: null,
     region: null,
     postion: null,
+    
   });
   const options = ["option1", "option2", "option3"];
 
@@ -74,7 +75,7 @@ const AddDistributeur = () => {
             />
             <div className="flex justify-end">
               <button
-                class="btn-green px-11 py-2.5 mt-4 light-grey"
+                className="btn-green px-11 py-2.5 mt-4 light-grey"
                 onClick={() => {
                   submitData();
                 }}

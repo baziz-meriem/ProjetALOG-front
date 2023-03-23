@@ -29,7 +29,7 @@ const Notifications = () => {
         }
 
         <div className="flex justify-end">
-              <button class="btn-green px-11 py-2.5 mt-4 light-grey">
+              <button classNames="btn-green px-11 py-2.5 mt-4 light-grey">
                 Marquer comme lu
               </button>
         </div>

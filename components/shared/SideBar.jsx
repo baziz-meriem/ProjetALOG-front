@@ -71,15 +71,20 @@ const SideBar = () => {
       <div className="mt-10">
         {Links.map((link, key) => (
           <div
+            key={key}
             className={`${
               router.pathname == link.link
                 ? "bg-dark-green font-medium cursor-pointer"
                 : ""
             } text-white px-3 py-3 rounded-md my-3 font-md flex`}
           >
-            <FontAwesomeIcon icon={link.icon} color="white" className="text-sm" width="15" />
+            <FontAwesomeIcon
+              icon={link.icon}
+              color="white"
+              className="text-sm"
+              width="15"
+            />
             <Link href={link.link} className="ml-2">
-              {" "}
               {link.name}
             </Link>
           </div>

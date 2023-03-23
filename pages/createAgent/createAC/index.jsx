@@ -1,21 +1,39 @@
 import CustomInput from "@/components/loginPage/CustomInput";
 import PageHeader from "@/components/shared/PageHeader";
 import React, { useState } from "react";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 const createAC = () => {
   const [data, setData] = useState({
-    nom: null,
-    password: null, // To generated
-    mail: null,
-    numTel: null,
-    idClient: null, // will get it from the session
+    nom: "true",
+    prenom: "true",
+    email: "sahbi@gmail.com",
+    numTel: "1234567891",
+    idClient: 29,
+    password: "1234567891",
   });
   const handleSubmit = () => {
     console.log(data);
+    axios
+      .post(
+        "https://sitandlipapi.onrender.com/api/v1/profileManagement/ac",
+        data
+      )
+      .then((res) => {
+        console.log(res);
+        if (res.status === 201) {
+          console.log("AM inserted");
+          toast.success("Ac Created Succesfully!");
+        } else {
+          toast.error("Some errors occured!");
+        }
+      });
   };
   const options = ["option1", "option2", "option3"];
   return (
     <div className="">
+      <ToastContainer />
       <PageHeader
         title="Ajouter un Agent Commerciale"
         description="Donner les informations générales de l'agent Commerciale"
@@ -31,11 +49,12 @@ const createAC = () => {
               data={data}
               type="text"
             />
+
             <CustomInput
               label="Email"
               options={options}
               steFunction={setData}
-              attr="mail"
+              attr="email"
               data={data}
               type="email"
             />
@@ -44,6 +63,14 @@ const createAC = () => {
 
         <div className="w-1/2 m-4">
           <div className="space-y-10 mt-16">
+            <CustomInput
+              label="Prénom"
+              options={options}
+              steFunction={setData}
+              attr="prenom"
+              data={data}
+              type="text"
+            />
             <CustomInput
               label="Numéro de télphone"
               options={options}
@@ -55,7 +82,7 @@ const createAC = () => {
 
             <div className="flex justify-end">
               <button
-                class="btn-green px-11 py-2.5 mt-4 light-grey"
+                className="btn-green px-11 py-2.5 mt-4 light-grey"
                 onClick={() => {
                   handleSubmit();
                 }}
