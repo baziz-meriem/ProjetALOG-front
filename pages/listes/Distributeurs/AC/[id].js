@@ -1,9 +1,9 @@
 import Image from "next/image";
 import React from "react";
 import PageHeader from "@/components/shared/PageHeader";
-import AffectationCard from "@/components/details/AffectationCard";
-import InfoCard from "@/components/details/InfoCard";
-import BoissonCard from "@/components/details/BoissonCard";
+import AffectationCard from "@/components/details/affectationCard";
+import InfoCard from "@/components/details/infoCard";
+import BoissonCard from "@/components/details/boissonCard";
 
 const distributeurAC = () => {
   const Data = [
