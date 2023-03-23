@@ -5,7 +5,7 @@ import AffectationCard from "@/components/details/affectationCard";
 import InfoCard from "@/components/details/infoCard";
 import BoissonCard from "@/components/details/boissonCard";
 
-const distributeurAC = () => {
+const DistributeursAC = () => {
   const Data = [
     { id: 1, label: "Latte Coffee", prix:"70",available:"true",image:"/icons/coffee.svg" },
     { id: 2, label: "Latte Coffee",prix:"70",available:"true",image:"/icons/coffee.svg"},
@@ -48,4 +48,4 @@ const distributeurAC = () => {
   );
 };
 
-export default distributeurAC;
+export default DistributeursAC;
