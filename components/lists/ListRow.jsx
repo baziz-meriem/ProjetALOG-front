@@ -45,7 +45,7 @@ const ListRow = ({data,numColumns,toAdd}) => {
 
         </div>
         <div className={`${showForm ? '' : 'hidden'}`}>
-            <ListForm />
+            <ListForm agent={toAdd} />
         </div>
     </div>
   );
