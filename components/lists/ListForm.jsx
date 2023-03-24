@@ -3,7 +3,7 @@ import CustomInput from "@/components/loginPage/CustomInput";
 import CustomSelect from "@/components/loginPage/CustomSelect";
 import axios from "axios";
 
-const ListForm = () => {
+const ListForm = ({agent}) => {
   useEffect(() => {
     if (!ADMs) {
       axios
@@ -30,7 +30,7 @@ const ListForm = () => {
   const options = ["option1", "option2", "option3"];
   return (
     <div className="my-2">
-      <h1 className="my-2 text-sm text-grey ">Créer un nouveau ADM</h1>
+      <h1 className="my-2 text-sm text-grey ">Créer un nouveau {agent}</h1>
       <div className="flex items-center justify-center  gap-8">
         <CustomInput
           label="Nom"
@@ -70,9 +70,7 @@ const ListForm = () => {
         />
         <button className="btn-green px-11 py-2.5 light-grey">Ajouter</button>
       </div>
-      <h1 className="my-2 text-sm text-grey">
-        Choisir un ADM qui existe déja{" "}
-      </h1>
+      <h1 className="my-2 text-sm text-grey">Choisir un {agent} qui existe déja </h1>
       <div className="flex items-center justify-center  gap-8 ">
         <div className="flex-1">
           <CustomSelect
