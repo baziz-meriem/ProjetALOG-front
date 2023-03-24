@@ -4,7 +4,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 const createClient = () => {
-  const router = useRouter() ; 
+  const router = useRouter();
+  
   const [data, setData] = useState({
     nom: null,
     email: null,
@@ -17,7 +18,10 @@ const createClient = () => {
         "https://sitandlipapi.onrender.com/api/v1/profileManagement/client",
         data
       )
-      .then((res) => {console.log(res) ;router.push('/listes/listeClients') });
+      .then((res) => {
+        console.log(res);
+        router.push("/listes/listeClients");
+      });
   };
   const options = ["option1", "option2", "option3"];
   return (
