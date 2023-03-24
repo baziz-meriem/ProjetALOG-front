@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { data } from "autoprefixer";
 
 const ListeDistributeur = () => {
+  let [Tablehead , setTableHead] = useState(null)
+    
   useEffect(() => {
     if (!Data) {
       axios
@@ -13,17 +15,15 @@ const ListeDistributeur = () => {
           "https://sitandlipapi.onrender.com/api/v1/resourceManagement/distributeur"
         )
         .then((res) => {
-          console.log(res.data);
           if (res.data.status === "success") {
             setData(res.data.data);
           }
+          setTableHead(res.data.data.length > 0 ? Object.keys(res.data.data[0]).slice(1) : null)
         });
     }
   });
 
   const [Data, setData] = useState(null);
-  const Tablehead =
-    Data && data.length > 0 ? Object.keys(Data[0]).slice(1) : null;
 
   if (!Data) return <div>Loding...</div>;
   return (

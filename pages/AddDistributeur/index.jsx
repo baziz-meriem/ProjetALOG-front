@@ -1,24 +1,47 @@
 import CustomSelect from "@/components/loginPage/CustomSelect";
 import PageHeader from "@/components/shared/PageHeader";
 import React, { useState } from "react";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 const AddDistributeur = () => {
   const [data, setData] = useState({
-    client: null,
+    idClient: null,
     type: null,
     agentAM: null,
     etat: null,
-    region: null,
+    idRegion: null,
     postion: null,
-    
   });
   const options = ["option1", "option2", "option3"];
+  const client = [29, 28, 115, 21];
+  const AM = [3, 4, 5, 6, 21];
+  const Type = ["Type1", "type2"];
+  const etat = ["Up", "Down"];
+  const position = ["Type1", "type2"];
+  const region = ["region 1", "Region 2"];
 
   const submitData = () => {
     console.log(data);
+    axios
+      .post(
+        "https://sitandlipapi.onrender.com/api/v1/resourceManagement/distributeur",
+        data
+      )
+      .then((res) => {
+        console.log(res);
+        if (res.status === 201) {
+          console.log("AM inserted");
+          toast.success("Distributeur Created Succesfully!");
+        } else {
+          toast.error("Some errors occured!");
+        }
+      });
   };
+
   return (
     <div className="">
+      <ToastContainer/>
       <PageHeader
         title="Ajouter un distributeur"
         description="Donner les informations générales du distributeur"
@@ -28,21 +51,21 @@ const AddDistributeur = () => {
           <div className="space-y-10 mt-16">
             <CustomSelect
               label="Client"
-              options={options}
+              options={client}
               steFunction={setData}
-              attr="client"
+              attr="idClient"
               data={data}
             />
             <CustomSelect
               label="Type"
-              options={options}
+              options={Type}
               steFunction={setData}
               attr="type"
               data={data}
             />
             <CustomSelect
               label="Position"
-              options={options}
+              options={position}
               steFunction={setData}
               attr="position"
               data={data}
@@ -54,23 +77,23 @@ const AddDistributeur = () => {
           <div className="space-y-10 mt-16">
             <CustomSelect
               label="Agent de Maintenance"
-              options={options}
+              options={AM}
               steFunction={setData}
-              attr="agentAM"
+              attr="idAM"
               data={data}
             />
             <CustomSelect
               label="Etat"
-              options={options}
+              options={etat}
               steFunction={setData}
               attr="etat"
               data={data}
             />
             <CustomSelect
               label="Région"
-              options={options}
+              options={region}
               steFunction={setData}
-              attr="region"
+              attr="idRegion"
               data={data}
             />
             <div className="flex justify-end">
