@@ -11,9 +11,11 @@ const ListForm = ({agent}) => {
         .then((res) => {
           console.log(res.data.data);
           let options = [];
+         if(!data){ //to remove later
           res.data.data.map((elem, key) => {
             options.push(elem.nom + " " + elem.prenom);
           });
+         } 
           setAdm(options);
         });
     }
