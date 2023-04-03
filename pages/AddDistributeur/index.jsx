@@ -3,6 +3,7 @@ import PageHeader from "@/components/shared/PageHeader";
 import React, { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import CustomInput from "@/components/loginPage/CustomInput";
 
 const AddDistributeur = () => {
   const [data, setData] = useState({
@@ -12,14 +13,15 @@ const AddDistributeur = () => {
     etat: null,
     idRegion: null,
     postion: null,
+    codeDeverouillage: null,
   });
   const options = ["option1", "option2", "option3"];
   const client = [29, 28, 115, 21];
-  const AM = [3, 4, 5, 6, 21];
+  const AM = [21, 4, 5, 6, 21];
   const Type = ["Type1", "type2"];
   const etat = ["Up", "Down"];
   const position = ["Type1", "type2"];
-  const region = ["region 1", "Region 2"];
+  const region = [1, 2];
 
   const submitData = () => {
     console.log(data);
@@ -41,7 +43,7 @@ const AddDistributeur = () => {
 
   return (
     <div className="">
-      <ToastContainer/>
+      <ToastContainer />
       <PageHeader
         title="Ajouter un distributeur"
         description="Donner les informations générales du distributeur"
@@ -95,6 +97,14 @@ const AddDistributeur = () => {
               steFunction={setData}
               attr="idRegion"
               data={data}
+            />
+            <CustomInput
+              label="code de Deverouillage"
+              options={options}
+              steFunction={setData}
+              attr="codeDeverouillage"
+              data={data}
+              type="text"
             />
             <div className="flex justify-end">
               <button

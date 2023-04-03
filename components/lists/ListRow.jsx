@@ -38,7 +38,10 @@ const ListRow = ({ data, numColumns, toAdd }) => {
                 <div
                   className="flex items-center justify-end gap-4 flex-1 cursor-pointer"
                   style={{ zIndex: 1 }}
-                  onClick={handleClick}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleClick();
+                  }}
                 >
                   <div className="text-darker-green">{toAdd}</div>
                   <Image
@@ -54,11 +57,10 @@ const ListRow = ({ data, numColumns, toAdd }) => {
             )}
           </div>
         ))}
-
-        </div>
-        <div className={`${showForm ? '' : 'hidden'}`}>
-            <ListForm agent={toAdd} />
-        </div>
+      </div>
+      <div className={`${showForm ? "" : "hidden"}`}>
+        <ListForm agent={toAdd} />
+      </div>
     </div>
   );
 };
