@@ -3,13 +3,12 @@ import CustomInput from "@/components/loginPage/CustomInput";
 import CustomSelect from "@/components/loginPage/CustomSelect";
 import axios from "axios";
 
-const ListForm = ({agent}) => {
+function  ListForm({ agent }){
   useEffect(() => {
     if (!ADMs) {
       axios
         .get("https://sitandlipapi.onrender.com/api/v1/profileManagement/adm")
         .then((res) => {
-          console.log(res.data.data);
           let options = [];
           res.data.data.map((elem, key) => {
             options.push(elem.nom + " " + elem.prenom);
@@ -70,7 +69,9 @@ const ListForm = ({agent}) => {
         />
         <button className="btn-green px-11 py-2.5 light-grey">Ajouter</button>
       </div>
-      <h1 className="my-2 text-sm text-grey">Choisir un {agent} qui existe déja </h1>
+      <h1 className="my-2 text-sm text-grey">
+        Choisir un {agent} qui existe déja{" "}
+      </h1>
       <div className="flex items-center justify-center  gap-8 ">
         <div className="flex-1">
           <CustomSelect

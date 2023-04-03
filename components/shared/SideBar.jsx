@@ -28,13 +28,13 @@ const SideBar = () => {
     {
       id: 3,
       name: "Gestion des comptes",
-      link: "/comptes",
+      link: "/createAgent/createADM",
       icon: faUsers,
     },
     {
       id: 4,
       name: "Nos distributeurs",
-      link: "/distributeurs",
+      link: "/listes/Distributeurs/AC",
       icon: faHardDrive,
     },
     {
