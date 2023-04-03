@@ -38,8 +38,8 @@ const boissonCard = ({data}) => {
       <h1 className="text-lg">{data.label}</h1>
       <Image
         src="/icons/edit.svg"
-        width={20}
-        height="20"
+        width={18}
+        height="18"
         alt="edit"
       ></Image>
     </div>
@@ -48,8 +48,8 @@ const boissonCard = ({data}) => {
       <h1 className="text-lg ">{data.prix} DA</h1>
       <Image
         src="/icons/edit.svg"
-        width={20}
-        height="20"
+        width={18}
+        height="18"
         alt="edit"
       ></Image>
     </div>

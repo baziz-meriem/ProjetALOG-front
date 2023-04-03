@@ -9,6 +9,8 @@ import HowHelp from "@/components/homePage/HowHelp";
 import Contact from "@/components/homePage/Contact";
 import Footer from "@/components/shared/Footer";
 
+
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
