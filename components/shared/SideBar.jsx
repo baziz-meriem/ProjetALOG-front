@@ -28,7 +28,7 @@ const SideBar = () => {
     {
       id: 3,
       name: "Gestion des comptes",
-      link: "/createAgent/createADM",
+      link: "/gestionComptes",
       icon: faUsers,
     },
     {

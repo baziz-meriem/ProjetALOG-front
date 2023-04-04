@@ -20,7 +20,7 @@ const createClient = () => {
       )
       .then((res) => {
         console.log(res);
-        router.push("/listes/listeClients");
+        router.push("/listes/Clients");
       });
   };
   const options = ["option1", "option2", "option3"];
