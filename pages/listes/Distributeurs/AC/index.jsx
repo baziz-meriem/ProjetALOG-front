@@ -52,10 +52,10 @@ const ListeDistributeur = ({ distributeur }) => {
 };
 export async function getServerSideProps() {
   const data = await fetch(
-    "http://localhost:8080/api/v1/resourceManagement/distributeur"
+    "https://sitandlipapi.onrender.com/api/v1/resourceManagement/distributeur"
   );
   const distributeur = await data.json();
   return { props: { distributeur } };
-  
+
 }
 export default ListeDistributeur;

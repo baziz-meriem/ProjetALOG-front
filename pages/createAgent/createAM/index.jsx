@@ -11,15 +11,12 @@ const createAM = () => {
     password: "1234567891", // To generated
     email: null,
     numTel: null,
-    idClient: 29, // will get it from the session
+    idClient: 24, // will get it from the session
   });
   const handleSubmit = () => {
     console.log(data);
     axios
-      .post(
-        "https://sitandlipapi.onrender.com/api/v1/profileManagement/am",
-        data
-      )
+      .post("https://sitandlipapi.onrender.com/api/v1/profileManagement/am", data)
       .then((res) => {
         if (res.data.status === "success") {
           console.log("AM inserted");
@@ -27,7 +24,8 @@ const createAM = () => {
         } else {
           toast.error("Some errors occured!");
         }
-      });
+      })
+      .catch((err) => console.log(err));
   };
   const options = ["option1", "option2", "option3"];
   return (
