@@ -10,18 +10,21 @@ const Dashboard = () => {
         <Card
           title="Nombre de Distributeurs"
           stats="1"
-          link="/AddDistributeur"
+          link="/listes/Distributeurs/AC"
+          addLink="/AddDistributeur"
         />
         <Card
           title="Nombre de Clients"
           stats="5"
           color="creem-green"
-          link="/createAgent/createClient"
+          link="/listes/Clients"
+          addLink="/createAgent/createClient"
         />
         <Card
           title="Nombre de Distributeurs"
           stats="1"
           link="/createAgent/createADM"
+          addLink="/createAgent/createADM"
         />
       </div>
       <div className=" flex flex-row gap-x-6 w-full h-full  ">

@@ -1,26 +1,33 @@
 import CustomSelect from "@/components/loginPage/CustomSelect";
 import PageHeader from "@/components/shared/PageHeader";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import CustomInput from "@/components/loginPage/CustomInput";
 
-const AddDistributeur = () => {
+const AddDistributeur = ({ clients, AMs , regions }) => {
   const [data, setData] = useState({
     idClient: null,
     type: null,
-    agentAM: null,
+    idAM : null , 
     etat: null,
     idRegion: null,
-    postion: null,
+    position: null,
     codeDeverouillage: null,
   });
-  const options = ["option1", "option2", "option3"];
-  const client = [29, 28, 115, 21];
-  const AM = [21, 4, 5, 6, 21];
-  const Type = ["Type1", "type2"];
-  const etat = ["Up", "Down"];
-  const position = ["Type1", "type2"];
+
+  const DistributeurTypes = [
+    { id: "type1", nom: "Type 1" },
+    { id: "type2", nom: "Type 2" },
+  ];
+  const etat =  [
+    { id: "up", nom: "Up" },
+    { id: "down", nom: "Down" },
+  ];
+  const position =  [
+    { id: "position1", nom: "position 1" },
+    { id: "position2", nom: "position 2" },
+  ];
   const region = [1, 2];
 
   const submitData = () => {
@@ -53,14 +60,14 @@ const AddDistributeur = () => {
           <div className="space-y-10 mt-16">
             <CustomSelect
               label="Client"
-              options={client}
+              options={clients}
               steFunction={setData}
               attr="idClient"
               data={data}
             />
             <CustomSelect
               label="Type"
-              options={Type}
+              options={DistributeurTypes}
               steFunction={setData}
               attr="type"
               data={data}
@@ -79,7 +86,7 @@ const AddDistributeur = () => {
           <div className="space-y-10 mt-16">
             <CustomSelect
               label="Agent de Maintenance"
-              options={AM}
+              options={AMs}
               steFunction={setData}
               attr="idAM"
               data={data}
@@ -93,14 +100,14 @@ const AddDistributeur = () => {
             />
             <CustomSelect
               label="Région"
-              options={region}
+              options={regions}
               steFunction={setData}
               attr="idRegion"
               data={data}
             />
             <CustomInput
               label="code de Deverouillage"
-              options={options}
+              options={clients}
               steFunction={setData}
               attr="codeDeverouillage"
               data={data}
@@ -124,3 +131,27 @@ const AddDistributeur = () => {
 };
 
 export default AddDistributeur;
+
+export async function getServerSideProps() {
+  // Get the clients
+  let clients = await fetch(
+    "https://sitandlipapi.onrender.com/api/v1/profileManagement/client"
+  );
+  clients = await clients.json();
+
+  // get the AMs
+  let AMs = await fetch(
+    "https://sitandlipapi.onrender.com/api/v1/profileManagement/am"
+  );
+  AMs = await AMs.json();
+
+  // Get all the regions 
+  let regions = await fetch(
+    "https://sitandlipapi.onrender.com/api/v1/resourceManagement/region"
+  );
+  regions = await regions.json();
+  console.log(regions)
+  return {
+    props: { clients: clients.data, AMs: AMs.data , regions : regions.data },
+  };
+}

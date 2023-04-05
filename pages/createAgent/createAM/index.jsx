@@ -11,7 +11,7 @@ const createAM = () => {
     password: "1234567891", // To generated
     email: null,
     numTel: null,
-    idClient: 24, // will get it from the session
+    idClient: 1, // will get it from the session
   });
   const handleSubmit = () => {
     console.log(data);

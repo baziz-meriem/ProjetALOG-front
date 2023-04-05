@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import PropTypes from "prop-types";
-const Card = ({ title, stats, color, link }) => {
+const Card = ({ title, stats, color, link , addLink }) => {
   const cardColor = color == "creem-green" ? "creem-green" : "light-green";
   return (
-    <div
+    <Link
       className={`p-4 m-2 bg-${cardColor} bg-opacity-100 drop-shadow-2xl shadow-all rounded-lg `}
+      href={link}
     >
       <div className="flex justify-between">
         <Image
@@ -19,7 +20,7 @@ const Card = ({ title, stats, color, link }) => {
           alt="user image"
           className=""
         ></Image>
-        <Link href={link}>
+        <Link href={addLink}>
           <Image
             src={
               cardColor === "creem-green"
@@ -61,7 +62,7 @@ const Card = ({ title, stats, color, link }) => {
           {stats}
         </h1>
       </div>
-    </div>
+    </Link>
   );
 };
 
