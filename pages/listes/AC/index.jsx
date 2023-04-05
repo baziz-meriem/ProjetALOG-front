@@ -2,7 +2,7 @@ import PageHeader from "@/components/shared/PageHeader";
 import ListHeader from "@/components/lists/ListHeader";
 import ListRow from "@/components/lists/ListRow";
 import Link from "next/link";
-
+import { useState } from "react";
 const ListAC = ({AC}) => {
     let [Tablehead, setTableHead] = useState(
         AC.data.length > 0
@@ -30,7 +30,7 @@ const ListAC = ({AC}) => {
               toAdd=""
             />
             {AC.data.map((rowData) => (
-              <Link href={`/listes/ACs/AC/${rowData.id}`}>
+              <Link href={`/listes/AC/${rowData.id}`}>
                 <ListRow
                   key={rowData.id}
                   data={rowData}
