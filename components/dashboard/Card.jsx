@@ -1,12 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import PropTypes from "prop-types";
-const Card = ({ title, stats, color, link , addLink }) => {
+import { useRouter } from "next/router";
+const Card = ({ title, stats, color, link, addLink }) => {
+  const router = useRouter();
   const cardColor = color == "creem-green" ? "creem-green" : "light-green";
   return (
-    <Link
+    <div
       className={`p-4 m-2 bg-${cardColor} bg-opacity-100 drop-shadow-2xl shadow-all rounded-lg `}
-      href={link}
+      onClick={() => router.push(link)}
     >
       <div className="flex justify-between">
         <Image
@@ -20,7 +22,7 @@ const Card = ({ title, stats, color, link , addLink }) => {
           alt="user image"
           className=""
         ></Image>
-        <Link href={addLink}>
+        <Link href={addLink} onClick={(e) => e.stopPropagation()}>
           <Image
             src={
               cardColor === "creem-green"
@@ -62,7 +64,7 @@ const Card = ({ title, stats, color, link , addLink }) => {
           {stats}
         </h1>
       </div>
-    </Link>
+    </div>
   );
 };
 

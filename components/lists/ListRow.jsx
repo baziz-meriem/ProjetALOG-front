@@ -27,9 +27,9 @@ const ListRow = ({ data, numColumns, toAdd }) => {
   };
 
   return (
-    <Link
+    <div
       className={`border-b-2 p-2 mt-6 border-solid border-${Color}`}
-      href={router.pathname + "/" + data.id}
+      onClick={() => router.push(router.pathname + "/" + data.id)}
     >
       <div
         className={`grid grid-cols-${numColumns} gap-4 text-sm capitalize text-${Color}`}
@@ -46,7 +46,7 @@ const ListRow = ({ data, numColumns, toAdd }) => {
                   className="flex items-center justify-end gap-4 flex-1 cursor-pointer"
                   style={{ zIndex: 1 }}
                   onClick={(e) => {
-                    e.preventDefault();
+                    e.stopPropagation();
                     handleClick();
                   }}
                 >
@@ -68,7 +68,7 @@ const ListRow = ({ data, numColumns, toAdd }) => {
       <div className={`${showForm ? "" : "hidden"}`}>
         <ListForm agent={toAdd} />
       </div>
-    </Link>
+    </div>
   );
 };
 

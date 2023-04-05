@@ -2,12 +2,13 @@ import Image from "next/image";
 import React, { useState, useRef, useEffect } from "react";
 import PageHeader from "@/components/shared/PageHeader";
 import AffectationCard from "@/components/details/affectationCard";
-import InfoCard from "@/components/details/infoCard";
 import BoissonCard from "@/components/details/boissonCard";
 import MapOverlay from "@/components/dashboard/MapOverlay";
 import dynamic from "next/dynamic";
 import DistributeurInfoCard from "@/components/details/DistributeurInfoCard";
 import { useRouter } from "next/router";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 const Map = dynamic(() => import("@/components/dashboard/Map"), { ssr: false });
 
@@ -90,13 +91,31 @@ const DistributeursAC = () => {
     };
   }, [showDetails]);
 
+    // delete distributeur by ID 
+    const deleteDistributeur = () => {
+      axios
+        .delete(
+          `https://sitandlipapi.onrender.com/api/v1/resourceManagement/distributeur/${id}`
+        )
+        .then((res) => {
+          router.push("/listes/Distributeurs/AC");
+        })
+        .catch((err) => toast.error(err.message));
+    };
+
   return (
     <div>
+      <ToastContainer/>
       <PageHeader
         title="Distributeur Details"
         description="Affiche les informations détaillées du distributeur"
       />
-
+      <button
+        className="block ml-auto  btn-red px-7 py-2.5 mt-6 light-grey relative"
+        onClick={() => deleteDistributeur()}
+      >
+        Supprimer le distributeur
+      </button>
       <DistributeurInfoCard title="Distributeur Infos" id={id} />
       <div className="flex gap-4 h-40">
         <AffectationCard title="AM du distributeur" />

@@ -4,12 +4,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import CustomInput from "@/components/loginPage/CustomInput";
+import { useRouter } from "next/router";
 
-const AddDistributeur = ({ clients, AMs , regions }) => {
+const AddDistributeur = ({ clients, AMs, regions }) => {
+  const router = useRouter();
   const [data, setData] = useState({
     idClient: null,
     type: null,
-    idAM : null , 
+    idAM: null,
     etat: null,
     idRegion: null,
     position: null,
@@ -20,11 +22,11 @@ const AddDistributeur = ({ clients, AMs , regions }) => {
     { id: "type1", nom: "Type 1" },
     { id: "type2", nom: "Type 2" },
   ];
-  const etat =  [
+  const etat = [
     { id: "up", nom: "Up" },
     { id: "down", nom: "Down" },
   ];
-  const position =  [
+  const position = [
     { id: "position1", nom: "position 1" },
     { id: "position2", nom: "position 2" },
   ];
@@ -42,6 +44,7 @@ const AddDistributeur = ({ clients, AMs , regions }) => {
         if (res.status === 201) {
           console.log("AM inserted");
           toast.success("Distributeur Created Succesfully!");
+          router.push("/listes/Distributeurs/AC");
         } else {
           toast.error("Some errors occured!");
         }
@@ -145,13 +148,13 @@ export async function getServerSideProps() {
   );
   AMs = await AMs.json();
 
-  // Get all the regions 
+  // Get all the regions
   let regions = await fetch(
     "https://sitandlipapi.onrender.com/api/v1/resourceManagement/region"
   );
   regions = await regions.json();
-  console.log(regions)
+  console.log(regions);
   return {
-    props: { clients: clients.data, AMs: AMs.data , regions : regions.data },
+    props: { clients: clients.data, AMs: AMs.data, regions: regions.data },
   };
 }

@@ -56,6 +56,5 @@ export async function getServerSideProps() {
   );
   const distributeur = await data.json();
   return { props: { distributeur } };
-
 }
 export default ListeDistributeur;

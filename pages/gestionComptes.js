@@ -12,19 +12,22 @@ const gestionComptes = () => {
           title="Les agents commericiaux"
           color="creem-green"
           stats="1"
-          link="/createAgent/createAC"
+          link="/listes/AC"
+          addLink="/createAgent/createAC"
         />
         <Card
           title="Les Decideurs"
           color="creem-green"
           stats="1"
-          link="/createAgent/createDE"
+          link="/listes/DE"
+          addLink="/createAgent/createDE"
         />
         <Card
           title="Nombre de maintenances"
           color="creem-green"
           stats="1"
-          link="/createAgent/createAM"
+          link="/listes/AM"
+          addLink="/createAgent/createAM"
         />
       </div>
     </div>
