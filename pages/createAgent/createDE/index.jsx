@@ -3,15 +3,16 @@ import PageHeader from "@/components/shared/PageHeader";
 import React, { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-
+import { useRouter } from "next/router";
 const CreateDecideur = () => {
+  const router = useRouter();
   const [data, setData] = useState({
     nom: null,
     prenom: null,
     password: "1234567891", // To generated
     email: null,
     numTel: null,
-    idClient: 29, // will get it from the session
+    idClient: 1, // will get it from the session
   });
   const handleSubmit = () => {
     console.log(data);
@@ -24,6 +25,7 @@ const CreateDecideur = () => {
         console.log(res);
         if (res.data.status === "success") {
           toast.success("Decideur Created Succesfully!");
+          router.push("/listes/DE");
         } else {
           toast.error("Some errors occured!");
         }
@@ -32,7 +34,7 @@ const CreateDecideur = () => {
   const options = ["option1", "option2", "option3"];
   return (
     <div className="">
-      <ToastContainer/>
+      <ToastContainer />
       <PageHeader
         title="Ajouter un Decideur"
         description="Donner les informations générales de l'agent Commerciale"
@@ -61,7 +63,7 @@ const CreateDecideur = () => {
 
         <div className="w-1/2 m-4">
           <div className="space-y-10 mt-16">
-          <CustomInput
+            <CustomInput
               label="Prenom"
               options={options}
               steFunction={setData}
