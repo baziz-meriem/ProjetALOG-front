@@ -3,25 +3,25 @@ import ListHeader from "@/components/lists/ListHeader";
 import ListRow from "@/components/lists/ListRow";
 import Link from "next/link";
 import { useState } from "react";
-const ListAC = ({AC}) => {
+const ListDE = ({DE}) => {
     let [Tablehead, setTableHead] = useState(
-        AC.data.length > 0
-          ? Object.keys(AC.data[0]).slice(1)
+        DE.data.length > 0
+          ? Object.keys(DE.data[0]).slice(1)
           : null
       );
     
-      if (!AC) return <div>Loding...</div>;
+      if (!DE) return <div>Loding...</div>;
   return (
     <div>
       <div className="flex-none">
         <PageHeader
-          title="Liste des ACs"
-          description="Affiche la liste de tous les ACs ainsi que leurs informations."
+          title="Liste des DEs"
+          description="Affiche la liste de tous les DEs ainsi que leurs informations."
         />
       </div>
       <div className="flex-auto  p-6 mt-6 shadow-all rounded-lg bg-transparent">
         <ListHeader title="Clients" />
-        {AC.data.length > 0 ? (
+        {DE.data.length > 0 ? (
           <>
             <ListRow
               key={Tablehead[0]}
@@ -29,8 +29,8 @@ const ListAC = ({AC}) => {
               numColumns="5"
               toAdd=""
             />
-            {AC.data.map((rowData) => (
-              <Link href={`/listes/AC/${rowData.id}`}>
+            {DE.data.map((rowData) => (
+              <Link href={`/listes/DE/${rowData.id}`}>
                 <ListRow
                   key={rowData.id}
                   data={rowData}
@@ -47,12 +47,12 @@ const ListAC = ({AC}) => {
   );
 };
 
-export default ListAC;
+export default ListDE;
 
 export async function getServerSideProps() {
     const data = await fetch(
-      "https://sitandlipapi.onrender.com/api/v1/profileManagement/AC"
+      "https://sitandlipapi.onrender.com/api/v1/profileManagement/decideur"
     );
-    const AC = await data.json();
-    return { props: { AC } };
+    const DE = await data.json();
+    return { props: { DE } };
   }

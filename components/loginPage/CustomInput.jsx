@@ -14,7 +14,7 @@ const CustomInput = ({ label, type, steFunction, attr, data ,size}) => {
 
   return (
     <div
-      className={`w-full inline-flex justify-between rounded-xl border border-gray-300 shadow-all p-${padding} bg-transparent text-base  capitalize font-medium text-gray-700  focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:ring-offset-2  `}
+      className={`w-full inline-flex justify-between rounded-xl border border-gray-300 shadow-all px-5 py-3 bg-transparent text-base  capitalize font-medium text-gray-700  focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:ring-offset-2  `}
     >
       <input
         placeholder={label}

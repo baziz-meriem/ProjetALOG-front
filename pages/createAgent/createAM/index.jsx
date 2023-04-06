@@ -3,15 +3,16 @@ import PageHeader from "@/components/shared/PageHeader";
 import React, { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-
+import { useRouter } from "next/router";
 const createAM = () => {
+  const router = useRouter();
   const [data, setData] = useState({
     nom: null,
     prenom: null,
     password: "1234567891", // To generated
     email: null,
     numTel: null,
-    idClient: 29, // will get it from the session
+    idClient: 1, // will get it from the session
   });
   const handleSubmit = () => {
     console.log(data);
@@ -24,10 +25,12 @@ const createAM = () => {
         if (res.data.status === "success") {
           console.log("AM inserted");
           toast.success("AM Created Succesfully!");
+          router.push('/listes/AM')
         } else {
           toast.error("Some errors occured!");
         }
-      });
+      })
+      .catch((err) => console.log(err));
   };
   const options = ["option1", "option2", "option3"];
   return (

@@ -1,8 +1,16 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import ListForm from "@/components/lists/ListForm";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
+<<<<<<< HEAD
 const ListRow = ({ data, numColumns, toAdd ,onButtonClick}) => {
+=======
+const ListRow = ({ data, numColumns, toAdd }) => {
+  const router = useRouter();
+
+>>>>>>> 86b00935b11affd9a23973711f9678c0dca564f9
   let values;
   let Color;
   let showIcon ;
@@ -31,7 +39,10 @@ const ListRow = ({ data, numColumns, toAdd ,onButtonClick}) => {
 // to show the description for reclamations
   const [showOverflow, setShowOverflow] = useState(false);
   return (
-    <div className={`border-b-2 p-2 mt-6 border-solid border-${Color}`}>
+    <div
+      className={`border-b-2 p-4 mt-4 border-solid border-${Color} hover:bg-green-500 hover:ml-3 hover:border-l-2 hover:border-l-green-600 hover:bg-opacity-5`}
+      onClick={() => router.push(router.pathname + "/" + data.id)}
+    >
       <div
         className={`grid grid-cols-${numColumns} gap-4 text-sm capitalize text-${Color}`}
         style={{ gridTemplateColumns: `repeat(${numColumns}, 1fr)` }}
@@ -48,7 +59,10 @@ const ListRow = ({ data, numColumns, toAdd ,onButtonClick}) => {
                 <div
                   className="flex items-center justify-end gap-4 flex-1 cursor-pointer"
                   style={{ zIndex: 1 }}
-                  onClick={handleClick}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleClick();
+                  }}
                 >
                 <div className="text-darker-green">{toAdd}</div>
                   <Image
@@ -87,6 +101,7 @@ const ListRow = ({ data, numColumns, toAdd ,onButtonClick}) => {
           </div>
           
         ))}
+<<<<<<< HEAD
             { showButton ?(
               <div className="flex items-center justify-center">
               
@@ -102,6 +117,12 @@ const ListRow = ({ data, numColumns, toAdd ,onButtonClick}) => {
         <div className={`${showForm ? '' : 'hidden'}`}>
             <ListForm agent={toAdd} />
         </div>
+=======
+      </div>
+      <div className={`${showForm ? "" : "hidden"}`}>
+        <ListForm agent={toAdd} />
+      </div>
+>>>>>>> 86b00935b11affd9a23973711f9678c0dca564f9
     </div>
   );
 };
