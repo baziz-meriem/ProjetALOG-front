@@ -18,8 +18,8 @@
   .btn-red{
     @apply bg-red-500 px-2 py-7 rounded-md text-creem-green;
   }
-  .btn-border-yellow {
-    @apply border-2 border-light-green text-light-green px-7 py-2 rounded-md  cursor-pointer hover:bg-yellow-300  hover:text-black;
+  .btn-border-green {
+    @apply border-2 border-light-green text-light-green px-7 py-2 rounded-md  cursor-pointer hover:bg-light-green  hover:text-black;
   }
   .bg-effect {
     @apply rounded-lg border border-gray-300 shadow-lg;

@@ -3,8 +3,9 @@ import PageHeader from "@/components/shared/PageHeader";
 import React, { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-
+import { useRouter } from "next/router";
 const createAM = () => {
+  const router = useRouter();
   const [data, setData] = useState({
     nom: null,
     prenom: null,
@@ -16,11 +17,15 @@ const createAM = () => {
   const handleSubmit = () => {
     console.log(data);
     axios
-      .post("https://sitandlipapi.onrender.com/api/v1/profileManagement/am", data)
+      .post(
+        "https://sitandlipapi.onrender.com/api/v1/profileManagement/am",
+        data
+      )
       .then((res) => {
         if (res.data.status === "success") {
           console.log("AM inserted");
           toast.success("AM Created Succesfully!");
+          router.push('/listes/AM')
         } else {
           toast.error("Some errors occured!");
         }

@@ -7,7 +7,7 @@ const Card = ({ title, stats, color, link, addLink }) => {
   const cardColor = color == "creem-green" ? "creem-green" : "light-green";
   return (
     <div
-      className={`p-4 m-2 bg-${cardColor} bg-opacity-100 drop-shadow-2xl shadow-all rounded-lg `}
+      className={`p-4 m-2 bg-${cardColor} bg-opacity-100 drop-shadow-2xl shadow-all rounded-lg cursor-pointer `}
       onClick={() => router.push(link)}
     >
       <div className="flex justify-between">

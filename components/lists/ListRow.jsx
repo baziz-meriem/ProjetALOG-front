@@ -28,7 +28,7 @@ const ListRow = ({ data, numColumns, toAdd }) => {
 
   return (
     <div
-      className={`border-b-2 p-2 mt-6 border-solid border-${Color}`}
+      className={`border-b-2 p-4 mt-4 border-solid border-${Color} hover:bg-green-500 hover:ml-3 hover:border-l-2 hover:border-l-green-600 hover:bg-opacity-5`}
       onClick={() => router.push(router.pathname + "/" + data.id)}
     >
       <div
