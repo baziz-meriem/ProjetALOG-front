@@ -27,7 +27,7 @@ const DashboardLayout = ({ children }) => {
       <div
         className={`${
           !isLayoutDisplayed()
-            ? "bg-creem-green bg-effect overflow-y-auto w-full rounded-l-3xl px-16 py-14 relative"
+            ? "bg-creem-green bg-effect overflow-y-auto w-full rounded-l-3xl px-16 py-10 relative"
             : ""
         }`}
       >

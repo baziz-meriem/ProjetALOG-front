@@ -10,9 +10,11 @@ function  ListForm({ agent }){
         .get("https://sitandlipapi.onrender.com/api/v1/profileManagement/adm")
         .then((res) => {
           let options = [];
+         if(!data){ //to remove later
           res.data.data.map((elem, key) => {
             options.push(elem.nom + " " + elem.prenom);
           });
+         } 
           setAdm(options);
         });
     }
