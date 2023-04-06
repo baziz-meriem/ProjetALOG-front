@@ -2,27 +2,27 @@ import PageHeader from "@/components/shared/PageHeader";
 import Card from "@/components/dashboard/Card";
 import React from "react";
 
-const Dashboard = () => {
+const Dashboard = ({ nbDistributeur, nbClient }) => {
   return (
     <div className="h-4/6 w-full">
       <PageHeader title="Dashboard" description="Welcome, Ouael!" />
       <div className="grid grid-cols-3 gap-x-4 w-full ">
         <Card
           title="Nombre de Distributeurs"
-          stats="1"
+          stats={nbDistributeur}
           link="/listes/Distributeurs/AC"
           addLink="/AddDistributeur"
         />
         <Card
           title="Nombre de Clients"
-          stats="5"
+          stats={nbClient}
           color="creem-green"
           link="/listes/Clients"
           addLink="/createAgent/createClient"
         />
         <Card
           title="Nombre de Distributeurs"
-          stats="1"
+          stats={nbDistributeur}
           link="/createAgent/createADM"
           addLink="/createAgent/createADM"
         />
@@ -39,3 +39,22 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+
+export async function getServerSideProps() {
+  let distributeur = await fetch(
+    "https://sitandlipapi.onrender.com/api/v1/resourceManagement/distributeur"
+  );
+  distributeur = await distributeur.json();
+
+  let clients = await fetch(
+    "https://sitandlipapi.onrender.com/api/v1/profileManagement/client"
+  );
+  clients = await clients.json();
+
+  return {
+    props: {
+      nbDistributeur: distributeur.data.length,
+      nbClient: clients.data.length,
+    },
+  };
+}
