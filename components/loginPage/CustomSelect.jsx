@@ -29,9 +29,9 @@ function CustomSelect({ label, options, steFunction, attr, data, size }) {
       <div className="text-left relative">
         <button
           type="button"
-          className={`w-full inline-flex justify-between rounded-xl border border-gray-300 shadow-all p-4 bg-transparent text-base  capitalize font-medium text-gray-400  focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:ring-offset-2  `}
+          className={`w-full inline-flex justify-between rounded-xl border border-gray-300 shadow-all p-${padding} bg-transparent text-base  capitalize font-medium text-gray-400  focus:outline-none focus:ring-2 focus:ring-emerald-100 focus:ring-offset-2  `}
           aria-haspopup="true"
-          aria-expanded="true"
+          aria-expanded="true" 
           onClick={handleSelectClick}
         >
           {selectedOption.nom !== null ? selectedOption.nom : label}
@@ -67,7 +67,6 @@ function CustomSelect({ label, options, steFunction, attr, data, size }) {
 
 CustomSelect.propTypes = {
   label: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
   steFunction: PropTypes.func.isRequired,
   attr: PropTypes.string.isRequired,
   data: PropTypes.objectOf(PropTypes.string),

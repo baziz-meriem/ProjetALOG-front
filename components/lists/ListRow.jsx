@@ -4,13 +4,9 @@ import ListForm from "@/components/lists/ListForm";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-<<<<<<< HEAD
-const ListRow = ({ data, numColumns, toAdd ,onButtonClick}) => {
-=======
-const ListRow = ({ data, numColumns, toAdd }) => {
+const ListRow = ({ data, numColumns, toAdd,onRowClick }) => {
   const router = useRouter();
 
->>>>>>> 86b00935b11affd9a23973711f9678c0dca564f9
   let values;
   let Color;
   let showIcon ;
@@ -41,8 +37,13 @@ const ListRow = ({ data, numColumns, toAdd }) => {
   return (
     <div
       className={`border-b-2 p-4 mt-4 border-solid border-${Color} hover:bg-green-500 hover:ml-3 hover:border-l-2 hover:border-l-green-600 hover:bg-opacity-5`}
-      onClick={() => router.push(router.pathname + "/" + data.id)}
+      onClick={() => {if(toAdd="response")onRowClick()//router.push(router.pathname + "/" + data.id)
+     
+    }
+    }
+      
     >
+
       <div
         className={`grid grid-cols-${numColumns} gap-4 text-sm capitalize text-${Color}`}
         style={{ gridTemplateColumns: `repeat(${numColumns}, 1fr)` }}
@@ -101,28 +102,10 @@ const ListRow = ({ data, numColumns, toAdd }) => {
           </div>
           
         ))}
-<<<<<<< HEAD
-            { showButton ?(
-              <div className="flex items-center justify-center">
-              
-              <button
-              className=" btn-green px-11 py-2.5 light-grey"
-              style={{ zIndex: 1 }} 
-              onClick={onButtonClick}>
-              Répondre
-            </button>
-            </div>
-            ):null}
-        </div>
-        <div className={`${showForm ? '' : 'hidden'}`}>
-            <ListForm agent={toAdd} />
-        </div>
-=======
       </div>
       <div className={`${showForm ? "" : "hidden"}`}>
         <ListForm agent={toAdd} />
       </div>
->>>>>>> 86b00935b11affd9a23973711f9678c0dca564f9
     </div>
   );
 };
