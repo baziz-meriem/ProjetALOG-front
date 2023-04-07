@@ -1,12 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { faUser , faEnvelope , faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
+import { forgetPassword, getRole, login } from "@/services/authService";
+import { ToastContainer, toast } from "react-toastify";
 const ConnectForm = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+  const handleSubmit = async(e) => {
+    e.preventDefault()
+try{
+  const {data} = await getRole(email)
+  const response= await login(email,password,data.role)
+  console.log(response)
+  if(response.data.success){
+  toast.success("logged in")
+  }
+}
+catch(error)
+{
+  toast.error(error.response.data.message)
+}
+};
   return (
     <div className="relative xl:w-1/3 lg:w-1/3 px-3 md:w-1/2 mx-auto pt-60 ">
+      <ToastContainer />
       <div className="googleLogin rounded-md">
         <div className="flex px-3 justify-between bg-effect rounded-md py-3 GoogleLogBtn   bg-creem-green cursor-pointer hover:bg-opacity-0 hover:text-white">
           <div>Log in with Google</div>
@@ -26,18 +54,23 @@ const ConnectForm = () => {
         ></Image>
         <p className=" text-lg text-center my-7 text-light-green">login to your account</p>
      
-        <div className="flex justify-between border-b  border-gray-400 py-1  my-4">
-          <input className="bg-transparent outline-none" placeholder="Email"/>
+  <form onSubmit={handleSubmit} >
+  <div className="flex justify-between border-b  border-gray-400 py-1  my-4">
+          <input className="bg-transparent outline-none" placeholder="Email"  value={email}  onChange={handleEmailChange} type="text"/>
           <FontAwesomeIcon icon={faEnvelope} width="20" />
         </div>
         <div className="flex justify-between border-b  border-gray-400 py-1  my-4">
-          <input className="bg-transparent outline-none" placeholder="Password"/>
+          <input className="bg-transparent outline-none" placeholder="Password"  value={password} onChange={handlePasswordChange} type="password"/>
           <FontAwesomeIcon icon={faLock} width="20" />
         </div>
+        <div className="flex justify-between items-center" >
+        <div className="text-xs text-left"><Link href="./forgetPassword" className="text-light-green underline">forgot password?</Link></div>
         <div className="text-xs text-right">dont have an accont? <Link href="/singup" className="text-light-green underline">Sign In</Link></div>
-        <div className="flex justify-between  py-1  mt-8">
-         <button className="btn-green w-full font-semibold">Log In</button>
         </div>
+        <div className="flex justify-between  py-1  ">
+         <button type="submit" className="btn-green w-full font-semibold">Log In</button>
+        </div>
+  </form>
       </div>
     </div>
   );
