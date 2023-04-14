@@ -33,8 +33,12 @@ const ListeDistributeur = ({ distributeur }) => {
               toAdd=""
             />
             {distributeur.data.map((rowData) => (
-              <Link href={`/listes/Distributeurs/AC/${rowData.id}?position=${rowData.position}`}>
-                <ListRow key={rowData.id} data={rowData} numColumns="7" />
+              <Link href={`/listes/Distributeurs/AC/${rowData.id}`}>
+                <ListRow
+                  key={rowData.id}
+                  data={rowData}
+                  numColumns="7"
+                />
               </Link>
             ))}
           </>

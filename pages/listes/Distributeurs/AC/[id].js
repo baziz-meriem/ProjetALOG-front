@@ -91,21 +91,21 @@ const DistributeursAC = () => {
     };
   }, [showDetails]);
 
-  // delete distributeur by ID
-  const deleteDistributeur = () => {
-    axios
-      .delete(
-        `https://sitandlipapi.onrender.com/api/v1/resourceManagement/distributeur/${id}`
-      )
-      .then((res) => {
-        router.push("/listes/Distributeurs/AC");
-      })
-      .catch((err) => toast.error(err.message));
-  };
+    // delete distributeur by ID 
+    const deleteDistributeur = () => {
+      axios
+        .delete(
+          `https://sitandlipapi.onrender.com/api/v1/resourceManagement/distributeur/${id}`
+        )
+        .then((res) => {
+          router.push("/listes/Distributeurs/AC");
+        })
+        .catch((err) => toast.error(err.message));
+    };
 
   return (
     <div>
-      <ToastContainer />
+      <ToastContainer/>
       <PageHeader
         title="Distributeur Details"
         description="Affiche les informations détaillées du distributeur"
@@ -120,7 +120,7 @@ const DistributeursAC = () => {
       <div className="flex gap-4 h-40">
         <AffectationCard title="AM du distributeur" />
         <div className=" w-1/2  mt-6 shadow-all rounded-lg bg-transparent overflow-hidden">
-          {showDetails ? <MapOverlay id={id} /> : <Map id={id} />}
+          {showDetails ? <MapOverlay /> : <Map />}
         </div>
       </div>
       <div className="p-10 mt-6 shadow-all rounded-lg bg-transparent">

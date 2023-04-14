@@ -47,9 +47,9 @@ const Dashboard = ({ distributeur, nbClient }) => {
         />
       </div>
       <div className=" flex flex-row gap-x-6 w-full h-full  ">
-        <div className=" w-1/2 h-full">
+      <div className=" w-1/2 h-full">
           <div className="p-1 m-2 h-1/2 w-full  bg-white bg-opacity-100 drop-shadow-2xl shadow-all rounded-lg ">
-            <BarChart data={data} />
+              <BarChart data={data} />
           </div>
           <div className="p-1 m-2 h-1/2 w-full  bg-white bg-opacity-100 drop-shadow-2xl shadow-all rounded-lg ">
             <LineChart data={data} />
@@ -58,6 +58,7 @@ const Dashboard = ({ distributeur, nbClient }) => {
         <div className=" m-2 overflow-hidden bg-white bg-opacity-100 drop-shadow-2xl shadow-all rounded-lg w-1/2 h-full">
           <DashboradMap distributeurs={distributeur} />
         </div>
+        
       </div>
     </div>
   );
