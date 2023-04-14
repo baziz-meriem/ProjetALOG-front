@@ -2,15 +2,25 @@ import PageHeader from "@/components/shared/PageHeader";
 import Card from "@/components/dashboard/Card";
 import BarChart from "@/components/dashboard/BarChart";
 import LineChart from "@/components/dashboard/LineChart";
+import dynamic from "next/dynamic";
+const DashboradMap = dynamic(
+  () => import("@/components/dashboard/DashbardMap"),
+  { ssr: false }
+);
 
-import React from "react";
-
-const Dashboard = ({ nbDistributeur, nbClient }) => {
+const Dashboard = ({ distributeur, nbClient }) => {
   const data = {
-    title: '',
-    labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+    title: "",
+    labels: ["January", "February", "March", "April", "May", "June"],
     values: [10, 20, 30, 25, 15, 5],
-    backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#48CAE4', '#ADFF2F', '#FF7F50'],
+    backgroundColor: [
+      "#FF6384",
+      "#36A2EB",
+      "#FFCE56",
+      "#48CAE4",
+      "#ADFF2F",
+      "#FF7F50",
+    ],
   };
   return (
     <div className="h-5/6 w-full">
@@ -18,7 +28,7 @@ const Dashboard = ({ nbDistributeur, nbClient }) => {
       <div className="grid grid-cols-3 gap-x-4 w-full ">
         <Card
           title="Nombre de Distributeurs"
-          stats={nbDistributeur}
+          stats={distributeur.length}
           link="/listes/Distributeurs/AC"
           addLink="/AddDistributeur"
         />
@@ -31,7 +41,7 @@ const Dashboard = ({ nbDistributeur, nbClient }) => {
         />
         <Card
           title="Nombre de Distributeurs"
-          stats={nbDistributeur}
+          stats={distributeur.length}
           link="/createAgent/createADM"
           addLink="/createAgent/createADM"
         />
@@ -42,11 +52,11 @@ const Dashboard = ({ nbDistributeur, nbClient }) => {
               <BarChart data={data} />
           </div>
           <div className="p-1 m-2 h-1/2 w-full  bg-white bg-opacity-100 drop-shadow-2xl shadow-all rounded-lg ">
-              <LineChart data={data} />
+            <LineChart data={data} />
           </div>
         </div>
-        <div className="p-4 m-2 bg-white bg-opacity-100 drop-shadow-2xl shadow-all rounded-lg w-1/2 h-full">
-            
+        <div className=" m-2 overflow-hidden bg-white bg-opacity-100 drop-shadow-2xl shadow-all rounded-lg w-1/2 h-full">
+          <DashboradMap distributeurs={distributeur} />
         </div>
         
       </div>
@@ -69,7 +79,7 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      nbDistributeur: distributeur.data.length,
+      distributeur: distributeur.data,
       nbClient: clients.data.length,
     },
   };

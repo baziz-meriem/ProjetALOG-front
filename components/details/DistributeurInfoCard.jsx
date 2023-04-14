@@ -102,7 +102,7 @@ const DistributeurInfoCard = ({ title, id }) => {
       </div>
       <div className="flex justify-end">
         <button
-          class="btn-green px-11 py-2.5 mt-6 light-grey relative"
+          className="btn-green px-11 py-2.5 mt-6 light-grey relative"
           onClick={() => updateClient()}
         >
           Modifier
