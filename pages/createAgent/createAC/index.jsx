@@ -3,14 +3,17 @@ import PageHeader from "@/components/shared/PageHeader";
 import React, { useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { useRouter } from "next/router";
 
 const createAC = () => {
+  const router = useRouter() ; 
+
   const [data, setData] = useState({
     nom: "true",
     prenom: "true",
     email: "sahbi@gmail.com",
     numTel: "1234567891",
-    idClient: 29,
+    idClient: 1,
     password: "1234567891",
   });
   const handleSubmit = () => {
@@ -25,6 +28,7 @@ const createAC = () => {
         if (res.status === 201) {
           console.log("AM inserted");
           toast.success("Ac Created Succesfully!");
+          router.push('/listes/AC')
         } else {
           toast.error("Some errors occured!");
         }

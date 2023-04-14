@@ -7,6 +7,7 @@ import {
   faUsers,
   faHardDrive,
   faUser,
+  faRectangleAd , faRightFromBracket
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
@@ -28,26 +29,32 @@ const SideBar = () => {
     {
       id: 3,
       name: "Gestion des comptes",
-      link: "/comptes",
+      link: "/gestionComptes",
       icon: faUsers,
     },
     {
       id: 4,
       name: "Nos distributeurs",
-      link: "/distributeurs",
+      link: "/listes/Distributeurs/AC",
       icon: faHardDrive,
     },
     {
-      id: 1,
+      id: 7,
+      name: "Annonces",
+      link: "/listes/Annonceur",
+      icon: faRectangleAd,
+    },
+    {
+      id: 5,
       name: "Mon profil",
       link: "/profile",
       icon: faUser,
     },
     {
-      id: 1,
+      id: 6,
       name: "Logout",
       link: "/logout",
-      icon: faHome,
+      icon: faRightFromBracket,
     },
   ];
   return (
@@ -84,7 +91,7 @@ const SideBar = () => {
               className="text-sm"
               width="15"
             />
-            <Link href={link.link} className="ml-2">
+            <Link href={link.link} className="ml-2 text-sm">
               {link.name}
             </Link>
           </div>
