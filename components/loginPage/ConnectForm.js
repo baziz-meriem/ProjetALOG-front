@@ -10,7 +10,7 @@ const ConnectForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleEmailChange = (e) => {
+  const handleEmailChange  = (e) => {
     setEmail(e.target.value);
   };
 
