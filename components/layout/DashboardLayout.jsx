@@ -18,6 +18,13 @@ const DashboardLayout = ({ children }) => {
     return pagesWithoutLayout.indexOf(router.pathname) >= 0;
   };
 
+  // useEffect(() => {
+  //   let loggedInUser = Cookies.get("user");
+  //   if (!loggedInUser && !isLayoutDisplayed()) {
+  //     router.push("/login");
+  //   }
+  // });
+
   return (
     <div
       className={`${

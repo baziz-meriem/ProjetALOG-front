@@ -13,4 +13,11 @@ export async function middleware(req, res) {
       return NextResponse.redirect(dashboardUrl)
     }
   }
+
+  // if (!req.nextUrl.pathname.startsWith("/login")) {
+  //   if (!loggedinUser) {
+  //     const loginUrl = new URL('/login', req.url)
+  //     return NextResponse.redirect(loginUrl)
+  //   }
+  // }
 }

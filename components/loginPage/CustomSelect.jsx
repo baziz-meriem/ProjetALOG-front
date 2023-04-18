@@ -44,10 +44,10 @@ function CustomSelect({ label, options, steFunction, attr, data, size }) {
           ></Image>
         </button>
         {isOpen && (
-          <div className="z-50 absolute left-0 right-0 mt-1 rounded-md shadow-all bg-white ring-1 ring-black ring-opacity-5 max-h-48 overflow-y-auto ">
+          <div className="z-50 absolute  left-0 right-0 mt-1 rounded-md shadow-all  bg-white ring-1 ring-black ring-opacity-5 h-48 overflow-y-auto ">
             {options.map((option, index) => (
               <div key={index}>
-                {index > 0 && <div className="border-t border-gray-300"></div>}
+                {index > 0 && <div className=" border-t border-gray-300"></div>}
                 <div
                   className={` w-full px-4 py-2 text-md text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer ${
                     selectedOption.id === option.id ? "bg-green-100" : ""
