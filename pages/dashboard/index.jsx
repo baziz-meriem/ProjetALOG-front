@@ -1,11 +1,13 @@
 import PageHeader from "@/components/shared/PageHeader";
 import Card from "@/components/dashboard/Card";
 import React from "react";
+import Cookies from "js-cookie";
 
 const Dashboard = () => {
+  let loggedInUser = Cookies.get('user') ; 
   return (
     <div className="h-4/6 w-full">
-      <PageHeader title="Dashboard" description="Welcome, Ouael!" />
+      <PageHeader title="Dashboard" description={`Welcome ${JSON.parse(loggedInUser).name}!`} />
       <div className="grid grid-cols-3 gap-x-4 w-full ">
         <Card
           title="Nombre de Distributeurs"

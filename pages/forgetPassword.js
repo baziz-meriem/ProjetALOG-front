@@ -8,6 +8,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useRouter } from "next/router";
+import { getRole } from "@/services/authService";
+
 const ForgetPassword = () => {
   const router = useRouter();
     const [email, setEmail] = useState("");  
@@ -18,14 +20,15 @@ const ForgetPassword = () => {
     e.preventDefault()
 try{
     const {data} = await getRole(email)
-    const request = await forgotPassword(email,data.role)
+    const request = await forgotPassword(email,data.role) ; 
+    console.log(request)
     if(request.data.success){
         localStorage.setItem("role", data.role);
         toast.success(request.data.message);
         setEmail("")
     }
 }catch(e){
-    toast.error(e.response.data.message);
+    toast.error(e.message);
     setEmail("")
 }
   };
