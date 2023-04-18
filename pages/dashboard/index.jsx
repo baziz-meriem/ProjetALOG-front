@@ -4,17 +4,14 @@ import BarChart from "@/components/dashboard/BarChart";
 import LineChart from "@/components/dashboard/LineChart";
 import dynamic from "next/dynamic";
 import Cookies from "js-cookie";
+import authMiddleware from "@/middlewares/authMiddleware";
 const DashboradMap = dynamic(
   () => import("@/components/dashboard/DashbardMap"),
   { ssr: false }
 );
 
-const Dashboard = ({ distributeur, nbClient }) => {
-  let cookieValue = Cookies.get("user");
-  let loggedInUser = "";
-  if (cookieValue) {
-    loggedInUser = JSON.parse(cookieValue);
-  }
+const Dashboard = ({ distributeur, nbClient , loggedInUser }) => {
+
 
   const data = {
     title: "",
@@ -33,7 +30,7 @@ const Dashboard = ({ distributeur, nbClient }) => {
     <div className="h-5/6 w-full">
       <PageHeader
         title="Dashboard"
-        description={`Welcome ${loggedInUser.name}!`}
+        description={`Welcome ${loggedInUser ? JSON.parse(loggedInUser).name :""}!`}
       />
       <div className="grid grid-cols-3 gap-x-4 w-full ">
         <Card
@@ -75,7 +72,8 @@ const Dashboard = ({ distributeur, nbClient }) => {
 
 export default Dashboard;
 
-export async function getServerSideProps() {
+export async function getServerSideProps({req , res}) {
+
   let distributeur = await fetch(
     "https://sitandlipapi.onrender.com/api/v1/resourceManagement/distributeur"
   );
@@ -90,6 +88,7 @@ export async function getServerSideProps() {
     props: {
       distributeur: distributeur.data,
       nbClient: clients.data.length,
+      loggedInUser : req.cookies.user?req.cookies.user:""
     },
   };
 }
