@@ -1,31 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
-import axios from "axios";
-import { faUserGroup } from "@fortawesome/free-solid-svg-icons";
-import { useRouter } from "next/router";
 
-const Map = () => {
-  const [disPosition, setPosition] = useState(null);
-  const router = useRouter();
-  const { id } = router.query;
-  useEffect(() => {
-    console.log(id);
-    if (!disPosition && id) {
-      axios
-        .get(
-          `https://sitandlipapi.onrender.com/api/v1/resourceManagement/distributeur/${id}`
-        )
-        .then((res) =>
-          setPosition(
-            res.data.data.position.split(",").map((elem) => Number(elem))
-          )
-        );
-    }
-  }, [id]);
+const DashboradMap = ({ distributeurs }) => {
+  const [position, setPosition] = useState([51.505, -0.09]); // set the initial position for the marker
   const positionIcon = L.icon({
     iconUrl:
       "https://cdn.jsdelivr.net/npm/leaflet@1.7.1/dist/images/marker-icon.png",
@@ -38,12 +19,11 @@ const Map = () => {
     shadowAnchor: [12, 41],
   });
 
-  if (!disPosition) return <div>Loading...</div>;
   return (
     <div className="">
       <MapContainer
         style={{ height: "80vh" }}
-        center={disPosition}
+        center={[29.850077, 3.089760]}
         zoom={5}
         scrollWheelZoom={false}
       >
@@ -51,12 +31,19 @@ const Map = () => {
           attribution="&copy; OpenStreetMap contributors"
           url={`https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWVyaWVtOGIiLCJhIjoiY2xmdWN5NXIwMDlwazNxcjM2ZjV4eDVyayJ9.KI6q1LujGSSGkarrCG7aPw`}
         />
-        <Marker position={disPosition} icon={positionIcon}>
-          <Popup>Distributeur num {id}</Popup>
-        </Marker>
+        {distributeurs.map((distributeur, key) => {
+          let distributeurPosition = distributeur.position
+            .split(",")
+            .map((elem) => Number(elem));
+          return (
+            <Marker position={distributeurPosition} icon={positionIcon}>
+              <Popup>Distributeur num {distributeur.id}</Popup>
+            </Marker>
+          );
+        })}
       </MapContainer>
     </div>
   );
 };
 
-export default Map;
+export default DashboradMap;

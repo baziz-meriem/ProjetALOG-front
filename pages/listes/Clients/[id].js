@@ -12,6 +12,8 @@ const Clients = () => {
   const router = useRouter();
   const { id } = router.query;
 
+
+  // get all clients 
   useEffect(() => {
     if (!Data) {
       axios
@@ -27,6 +29,7 @@ const Clients = () => {
     }
   });
 
+  // delete the client by ID 
   const deleteClient = () => {
     axios
       .delete(
@@ -40,6 +43,7 @@ const Clients = () => {
 
   const [Data, setData] = useState(null);
   const Tablehead = Data ? Object.keys(Data[0]).slice(1) : null;
+  
   if (!Data) return <div>Loding...</div>;
   return (
     <div>

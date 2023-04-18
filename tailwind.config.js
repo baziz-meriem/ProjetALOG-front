@@ -16,7 +16,8 @@ module.exports = {
         "darker-green":"#4B7F6A",
         "creem-green": "#F2F8F2",
         "grey":"#A8A8A8",
-        "light-grey":"#F2F8F2"
+        "light-grey":"#F2F8F2",
+        "cream-grey" : "#D9D9D9"
       },
       boxShadow: {
         'all': '0 0,0 0 1em rgba(0, 0, 0, 0.14)',

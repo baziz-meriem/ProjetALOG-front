@@ -29,7 +29,7 @@ const ListeDistributeur = ({ distributeur }) => {
             <ListRow
               key={Tablehead[0]}
               data={Tablehead}
-              numColumns="6"
+              numColumns="7"
               toAdd=""
             />
             {distributeur.data.map((rowData) => (
@@ -37,8 +37,7 @@ const ListeDistributeur = ({ distributeur }) => {
                 <ListRow
                   key={rowData.id}
                   data={rowData}
-                  numColumns="6"
-                  toAdd="ADMs"
+                  numColumns="7"
                 />
               </Link>
             ))}
@@ -56,6 +55,5 @@ export async function getServerSideProps() {
   );
   const distributeur = await data.json();
   return { props: { distributeur } };
-
 }
 export default ListeDistributeur;
