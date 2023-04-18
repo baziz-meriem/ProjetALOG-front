@@ -6,7 +6,7 @@ import Image from "next/image";
 const DashboardLayout = ({ children }) => {
   const router = useRouter();
 
-  const pagesWithoutLayout = ["/", "/about", "/login"];
+  const pagesWithoutLayout = ["/", "/about", "/login","/forgetPassword","/resetPassword"];
 
   const isLayoutDisplayed = () => {
     return pagesWithoutLayout.indexOf(router.pathname) >= 0;

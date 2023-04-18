@@ -3,12 +3,19 @@ import Card from "@/components/dashboard/Card";
 import BarChart from "@/components/dashboard/BarChart";
 import LineChart from "@/components/dashboard/LineChart";
 import dynamic from "next/dynamic";
+import Cookies from "js-cookie";
 const DashboradMap = dynamic(
   () => import("@/components/dashboard/DashbardMap"),
   { ssr: false }
 );
 
 const Dashboard = ({ distributeur, nbClient }) => {
+  let cookieValue = Cookies.get("user");
+  let loggedInUser = "";
+  if (cookieValue) {
+    loggedInUser = JSON.parse(cookieValue);
+  }
+
   const data = {
     title: "",
     labels: ["January", "February", "March", "April", "May", "June"],
@@ -24,7 +31,10 @@ const Dashboard = ({ distributeur, nbClient }) => {
   };
   return (
     <div className="h-5/6 w-full">
-      <PageHeader title="Dashboard" description="Welcome, Ouael!" />
+      <PageHeader
+        title="Dashboard"
+        description={`Welcome ${loggedInUser.name}!`}
+      />
       <div className="grid grid-cols-3 gap-x-4 w-full ">
         <Card
           title="Nombre de Distributeurs"
@@ -47,9 +57,9 @@ const Dashboard = ({ distributeur, nbClient }) => {
         />
       </div>
       <div className=" flex flex-row gap-x-6 w-full h-full  ">
-      <div className=" w-1/2 h-full">
+        <div className=" w-1/2 h-full">
           <div className="p-1 m-2 h-1/2 w-full  bg-white bg-opacity-100 drop-shadow-2xl shadow-all rounded-lg ">
-              <BarChart data={data} />
+            <BarChart data={data} />
           </div>
           <div className="p-1 m-2 h-1/2 w-full  bg-white bg-opacity-100 drop-shadow-2xl shadow-all rounded-lg ">
             <LineChart data={data} />
@@ -58,7 +68,6 @@ const Dashboard = ({ distributeur, nbClient }) => {
         <div className=" m-2 overflow-hidden bg-white bg-opacity-100 drop-shadow-2xl shadow-all rounded-lg w-1/2 h-full">
           <DashboradMap distributeurs={distributeur} />
         </div>
-        
       </div>
     </div>
   );
