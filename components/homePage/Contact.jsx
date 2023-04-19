@@ -1,7 +1,7 @@
 import Image from "next/image";
 const Contact = () => {
   return (
-    <div className="lg:px-32 py-20">
+    <div className="lg:px-32 py-20" data-testid="contact" >
       <div className="text-center w-fit text-4xl font-bold mx-auto">
         <div>Contact US</div>
         <div className="w-24 h-2 rounded-md bg-light-green ml-auto "></div>

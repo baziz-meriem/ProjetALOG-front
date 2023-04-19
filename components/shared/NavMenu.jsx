@@ -27,7 +27,7 @@ const NavBar = () => {
 
   const [menueActive, setActive] = useState(false);
   return (
-    <div className="absolute w-full z-50">
+    <div className="absolute w-full z-50" data-testid="navbar" >
       {/* Large screen menu  */}
       <div className="md:flex justify-between xl:px-28 lg:px-10 md:px-10 py-10 hidden ">
         <div>
