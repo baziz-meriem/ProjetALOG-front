@@ -1,7 +1,7 @@
 import Image from "next/image";
 const Header = () => {
   return (
-    <div className="h-screen w-full relative overflow-hidden">
+    <div className="h-screen w-full relative overflow-hidden" data-testid="header">
       <Image
         src="/images/lFlowers.png"
         width={350}

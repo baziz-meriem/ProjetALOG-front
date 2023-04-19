@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const HowHelp = () => {
   return (
-    <div className="flex py-32 lg:px-32 gap-20 justify-between relative">
+    <div className="flex py-32 lg:px-32 gap-20 justify-between relative" data-testid="how-help">
       <Image
         src="/images/rFlowers.png"
         width={310}

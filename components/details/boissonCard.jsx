@@ -19,7 +19,7 @@ const boissonCard = ({data}) => {
     ></Image>
     <div className="relative">
         <Image
-          src={data.image}
+          src={data.image ?data.image:"/icons/coffee.svg"}
           width={150}
           height="150"
           alt="coffee"

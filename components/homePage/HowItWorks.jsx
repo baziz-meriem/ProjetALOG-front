@@ -23,17 +23,16 @@ const HowItWorks = () => {
     },
   ];
   return (
-    <div className="lg:px-32">
+    <div className="lg:px-32" data-testid="how-it-works">
       <div className="text-center w-fit text-4xl font-bold mx-auto">
         <div>How does it Work ?</div>
         <div className="w-24 h-2 rounded-md bg-light-green ml-auto mr-4"></div>
       </div>
       <div className="flex justify-between py-20">
-      {steps.map((step, key) => (
-        <StepsCards step={step} />
-      ))}
+        {steps.map((step, key) => (
+          <StepsCards step={step} key={step.id} />
+        ))}
       </div>
-    
     </div>
   );
 };

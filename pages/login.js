@@ -2,9 +2,9 @@ import ConnectForm from "@/components/loginPage/ConnectForm";
 import NavBar from "@/components/shared/NavMenu";
 import Image from "next/image";
 const login = () => {
-    return (
-        <div className="h-screen w-full relative overflow-hidden">
-        <NavBar/>
+  return (
+    <div className="h-screen w-full relative overflow-hidden">
+      <NavBar />
       <Image
         src="/images/lFlowers.png"
         width={350}
@@ -20,10 +20,10 @@ const login = () => {
         className="absolute bottom-0 right-0"
       ></Image>
       <div className=" lg:px-32 justify-between px-5">
-       <ConnectForm/>
+        <ConnectForm />
       </div>
     </div>
-    );
+  );
 };
 
 export default login;

@@ -4,9 +4,9 @@ import ListForm from "@/components/lists/ListForm";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-const ListRow = ({ data, numColumns, toAdd,onRowClick }) => {
-  const router = useRouter();
+const ListRow = ({ data, numColumns, toAdd ,onButtonClick}) => {
 
+  const router = useRouter();
   let values;
   let Color;
   let showIcon ;

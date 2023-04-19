@@ -1,11 +1,26 @@
 import CustomInput from "@/components/loginPage/CustomInput";
 import PageHeader from "@/components/shared/PageHeader";
-import React, { useState } from "react";
+import React, { useState  , useEffect} from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
+
 const CreateDecideur = () => {
   const router = useRouter();
+
+  const [loggedInUser, setUser] = useState(null);
+  useEffect(() => {
+    if (!loggedInUser) {
+      const cookieValue = Cookies.get("user");
+      if (cookieValue) {
+        console.log(JSON.parse(cookieValue));
+        setUser(JSON.parse(cookieValue));
+        setData({ ...data, idClient: JSON.parse(cookieValue).idClient });
+      }
+    }
+  });
+
   const [data, setData] = useState({
     nom: null,
     prenom: null,

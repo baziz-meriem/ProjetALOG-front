@@ -75,12 +75,13 @@ const AddDistributeur = ({ clients, AMs, regions }) => {
               attr="type"
               data={data}
             />
-            <CustomSelect
-              label="Position"
-              options={position}
+              <CustomInput
+              label="Potion X,Y"
+              options={clients}
               steFunction={setData}
               attr="position"
               data={data}
+              type="text"
             />
           </div>
         </div>
