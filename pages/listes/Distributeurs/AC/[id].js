@@ -1,81 +1,33 @@
-import Image from "next/image";
+// React imports
 import React, { useState, useRef, useEffect } from "react";
+
+// Next.js imports
+import Image from "next/image";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+
+// Component imports
 import PageHeader from "@/components/shared/PageHeader";
 import AffectationCard from "@/components/details/affectationCard";
 import BoissonCard from "@/components/details/boissonCard";
 import MapOverlay from "@/components/dashboard/MapOverlay";
-import dynamic from "next/dynamic";
 import DistributeurInfoCard from "@/components/details/DistributeurInfoCard";
-import { useRouter } from "next/router";
+
+// Service imports
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { getBoissons } from "@/services/boisson";
 
 const Map = dynamic(() => import("@/components/dashboard/Map"), { ssr: false });
 
 const DistributeursAC = () => {
+  // State and router hooks
+  const [boissonData, setData] = useState(null);
   const router = useRouter();
   const { id } = router.query;
-  const Data = [
-    {
-      id: 1,
-      label: "Latte Coffee",
-      prix: "70",
-      available: "true",
-      image: "/icons/coffee.svg",
-    },
-    {
-      id: 2,
-      label: "Latte Coffee",
-      prix: "70",
-      available: "true",
-      image: "/icons/coffee.svg",
-    },
-    {
-      id: 3,
-      label: "Latte Coffee",
-      prix: "70",
-      available: "false",
-      image: "/icons/coffee.svg",
-    },
-    {
-      id: 4,
-      label: "Latte Coffee",
-      prix: "70",
-      available: "false",
-      image: "/icons/coffee.svg",
-    },
-    {
-      id: 5,
-      label: "Latte Coffee",
-      prix: "70",
-      available: "true",
-      image: "/icons/coffee.svg",
-    },
-    {
-      id: 6,
-      label: "Latte Coffee",
-      prix: "70",
-      available: "false",
-      image: "/icons/coffee.svg",
-    },
-    {
-      id: 7,
-      label: "Latte Coffee",
-      prix: "70",
-      Role: "AC",
-      Region: "true",
-      image: "/icons/coffee.svg",
-    },
-    {
-      id: 8,
-      label: "Latte Coffee",
-      prix: "70",
-      available: "false",
-      image: "/icons/coffee.svg",
-    },
-  ];
   const [showDetails, setshowDetails] = useState(false);
 
+  // Effect to handle keydown events
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "m" && !showDetails) {
@@ -84,28 +36,36 @@ const DistributeursAC = () => {
         setshowDetails(false);
       }
     };
-
     document.addEventListener("keydown", handleKeyDown);
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [showDetails]);
 
-    // delete distributeur by ID 
-    const deleteDistributeur = () => {
-      axios
-        .delete(
-          `https://sitandlipapi.onrender.com/api/v1/resourceManagement/distributeur/${id}`
-        )
-        .then((res) => {
-          router.push("/listes/Distributeurs/AC");
-        })
-        .catch((err) => toast.error(err.message));
+  // get all drinks
+  useEffect(() => {
+    const getAllBoissons = async () => {
+      const { data } = await getBoissons(id);
+      setData(data.data);
     };
+    !boissonData && id && getAllBoissons();
+  }, [id]);
+
+  // Function to delete a distributor by ID
+  const deleteDistributeur = () => {
+    axios
+      .delete(
+        `https://sitandlipapi.onrender.com/api/v1/resourceManagement/distributeur/${id}`
+      )
+      .then((res) => {
+        router.push("/listes/Distributeurs/AC");
+      })
+      .catch((err) => toast.error(err.message));
+  };
 
   return (
     <div>
-      <ToastContainer/>
+      <ToastContainer />
       <PageHeader
         title="Distributeur Details"
         description="Affiche les informations détaillées du distributeur"
@@ -131,21 +91,29 @@ const DistributeursAC = () => {
             height="30"
             alt="user icon"
           ></Image>
-          <div className="text-xl font-medium ">Les Boissons</div>
+          <div className="text-xl font-medium flex justify-between w-full">
+            <div>Les Boissons</div>
+            <div>
+              <button className="btn-green block ml-auto text-sm">
+                Ajouter un Boisson
+              </button>
+            </div>
+          </div>
         </div>
-        <div className="text-gray-500 mt-1 text-grey">
+        <div className="text-gray-500 mt-1">
           Liste de toutes les boissons que le distributeur peut préparer
         </div>
 
         <div className="grid grid-cols-3 gap-16">
-          {Data.map((rowData) => (
-            <BoissonCard
-              key={rowData.id}
-              data={rowData}
-              numColumns="6"
-              toAdd="ADMs"
-            />
-          ))}
+          {boissonData &&
+            boissonData.map((rowData) => (
+              <BoissonCard
+                key={rowData.id}
+                data={rowData}
+                numColumns="6"
+                toAdd="ADMs"
+              />
+            ))}
         </div>
       </div>
     </div>
