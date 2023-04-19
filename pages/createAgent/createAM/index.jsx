@@ -1,26 +1,44 @@
 import CustomInput from "@/components/loginPage/CustomInput";
 import PageHeader from "@/components/shared/PageHeader";
-import React, { useState } from "react";
+import React, { useState  , useEffect} from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import { useRouter } from "next/router";
+import Cookies from "js-cookie";
 
 const createAM = () => {
+  const router = useRouter();
+  const [loggedInUser, setUser] = useState(null);
+  useEffect(() => {
+    if (!loggedInUser) {
+      const cookieValue = Cookies.get("user");
+      if (cookieValue) {
+        console.log(JSON.parse(cookieValue))
+        setUser(JSON.parse(cookieValue));
+        setData({...data , "idClient" : JSON.parse(cookieValue).idClient})
+      }
+    }
+  });
   const [data, setData] = useState({
     nom: null,
     prenom: null,
     password: "1234567891", // To generated
     email: null,
     numTel: null,
-    idClient: 24, // will get it from the session
+    idClient: 1, // will get it from the session
   });
   const handleSubmit = () => {
     console.log(data);
     axios
-      .post("https://sitandlipapi.onrender.com/api/v1/profileManagement/am", data)
+      .post(
+        "https://sitandlipapi.onrender.com/api/v1/profileManagement/am",
+        data
+      )
       .then((res) => {
         if (res.data.status === "success") {
           console.log("AM inserted");
           toast.success("AM Created Succesfully!");
+          router.push('/listes/AM')
         } else {
           toast.error("Some errors occured!");
         }

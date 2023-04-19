@@ -1,16 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import SideBar from "../shared/SideBar";
 import Image from "next/image";
-
+import Cookies from "js-cookie";
 const DashboardLayout = ({ children }) => {
   const router = useRouter();
 
-  const pagesWithoutLayout = ["/", "/about", "/login","/forgetPassword","/resetPassword"];
+  const pagesWithoutLayout = [
+    "/",
+    "/about",
+    "/login",
+    "/forgetPassword",
+    "/resetPassword",
+  ];
 
   const isLayoutDisplayed = () => {
     return pagesWithoutLayout.indexOf(router.pathname) >= 0;
   };
+
+  // useEffect(() => {
+  //   let loggedInUser = Cookies.get("user");
+  //   if (!loggedInUser && !isLayoutDisplayed()) {
+  //     router.push("/login");
+  //   }
+  // });
 
   return (
     <div
@@ -27,7 +40,7 @@ const DashboardLayout = ({ children }) => {
       <div
         className={`${
           !isLayoutDisplayed()
-            ? "bg-creem-green bg-effect overflow-y-auto w-full rounded-l-3xl px-16 py-14 relative"
+            ? "bg-creem-green bg-effect overflow-y-auto w-full rounded-l-3xl px-16 py-10 relative"
             : ""
         }`}
       >

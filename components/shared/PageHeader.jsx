@@ -1,9 +1,20 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBell } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBell,
+  faArrowRightFromBracket,
+} from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
+import Cookies from "js-cookie";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 const PageHeader = ({ title, description }) => {
+  const router = useRouter();
+  const logOut = () => {
+    Cookies.remove("user");
+    router.push("/login");
+  };
   return (
     <div className="flex justify-between">
       <div>
@@ -12,14 +23,20 @@ const PageHeader = ({ title, description }) => {
       </div>
       <div className="flex">
         <FontAwesomeIcon icon={faBell} className="text-2xl mx-4 mt-2" />
-        <div className=" w-10 h-10 rounded-full relative overflow-hidden">
+        <Link href='/profile' className=" w-10 h-10 rounded-full relative overflow-hidden">
           <Image
             src="/images/user.png"
             width={100}
             height="100"
             alt="exaview logo"
           ></Image>
-        </div>
+        </Link>
+
+        <FontAwesomeIcon
+          icon={faArrowRightFromBracket}
+          className="relative text-2xl mx-4 mt-2 cursor-pointer"
+          onClick={logOut}
+        />
       </div>
     </div>
   );
