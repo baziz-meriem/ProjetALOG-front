@@ -33,7 +33,8 @@ const ConnectForm = () => {
           id: response.data.user.id,
           role: response.data.role,
           token: response.data.token,
-          name: response.data.user.nom 
+          name: response.data.user.nom ,
+          idClient : response.data.user.idClient
         };
         // set the cookie
         Cookies.set("user", JSON.stringify(user), { expires: 7, path: "/" });

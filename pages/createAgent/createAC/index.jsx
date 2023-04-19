@@ -1,13 +1,23 @@
 import CustomInput from "@/components/loginPage/CustomInput";
 import PageHeader from "@/components/shared/PageHeader";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import { useRouter } from "next/router";
-
+import Cookies from "js-cookie";
 const createAC = () => {
-  const router = useRouter() ; 
-
+  const router = useRouter();
+  const [loggedInUser, setUser] = useState(null);
+  useEffect(() => {
+    if (!loggedInUser) {
+      const cookieValue = Cookies.get("user");
+      if (cookieValue) {
+        console.log(JSON.parse(cookieValue))
+        setUser(JSON.parse(cookieValue));
+        setData({...data , "idClient" : JSON.parse(cookieValue).idClient})
+      }
+    }
+  });
   const [data, setData] = useState({
     nom: "true",
     prenom: "true",
@@ -28,7 +38,7 @@ const createAC = () => {
         if (res.status === 201) {
           console.log("AM inserted");
           toast.success("Ac Created Succesfully!");
-          router.push('/listes/AC')
+          router.push("/listes/AC");
         } else {
           toast.error("Some errors occured!");
         }
