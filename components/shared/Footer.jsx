@@ -11,7 +11,7 @@ import {
 const Footer = () => {
   const socialMedia = [faFacebook, faInstagram, faGoogle, faTwitter, faYoutube];
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden" data-testid="footer">
       <Image
         src="/images/rFlowers.png"
         width={300}

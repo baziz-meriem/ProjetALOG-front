@@ -9,8 +9,6 @@ import HowHelp from "@/components/homePage/HowHelp";
 import Contact from "@/components/homePage/Contact";
 import Footer from "@/components/shared/Footer";
 
-
-
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -24,11 +22,11 @@ export default function Home() {
       </Head>
       <main className="">
         <NavBar />
-        <Header/>
-        <HowItWorks/>
-        <HowHelp/>
-        <Contact/>
-        <Footer/>
+        <Header  />
+        <HowItWorks  />
+        <HowHelp  />
+        <Contact />
+        <Footer  />
       </main>
     </>
   );
