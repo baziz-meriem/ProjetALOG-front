@@ -1,5 +1,4 @@
 import PageHeader from "@/components/shared/PageHeader";
-import Card from "@/components/dashboard/Card";
 import BarChart from "@/components/dashboard/BarChart";
 import LineChart from "@/components/dashboard/LineChart";
 import dynamic from "next/dynamic";
@@ -32,27 +31,6 @@ const Dashboard = ({ distributeur, nbClient , loggedInUser }) => {
         title="Dashboard"
         description={`Welcome ${loggedInUser ? JSON.parse(loggedInUser).name :""}!`}
       />
-      <div className="grid grid-cols-3 gap-x-4 w-full ">
-        <Card
-          title="Nombre de Distributeurs"
-          stats={distributeur.length}
-          link="/listes/Distributeurs/AC"
-          addLink="/AddDistributeur"
-        />
-        <Card
-          title="Nombre de Clients"
-          stats={nbClient}
-          color="creem-green"
-          link="/listes/Clients"
-          addLink="/createAgent/createClient"
-        />
-        <Card
-          title="Nombre de Distributeurs"
-          stats={distributeur.length}
-          link="/createAgent/createADM"
-          addLink="/createAgent/createADM"
-        />
-      </div>
       <div className=" flex flex-row gap-x-6 w-full h-full  ">
         <div className=" w-1/2 h-full">
           <div className="p-1 m-2 h-1/2 w-full  bg-white bg-opacity-100 drop-shadow-2xl shadow-all rounded-lg ">

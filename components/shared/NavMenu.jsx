@@ -15,10 +15,7 @@ const NavBar = () => {
       name: "Dashboard",
       href: "/dashboard",
     },
-    {
-      name: "About",
-      href: "/about",
-    },
+
     {
       name: "Contact",
       href: "/contact",
@@ -29,16 +26,11 @@ const NavBar = () => {
   return (
     <div className="absolute w-full z-50" data-testid="navbar" >
       {/* Large screen menu  */}
-      <div className="md:flex justify-between xl:px-28 lg:px-10 md:px-10 py-10 hidden ">
+      <div className="md:flex font-bold text-white justify-between xl:px-27 lg:px-40 md:px-10 py-10 hidden ">
         <div>
-          <Image
-            src="/logos/greenDevlift.png"
-            width={110}
-            height="100"
-            alt="exaview logo"
-          ></Image>
+
         </div>
-        <div className="flex">
+        <div className="flex pr-5">
           {pages.map((elem, key) => (
             <Link
               href={elem.href}
@@ -52,14 +44,14 @@ const NavBar = () => {
             >
               {elem.name}
               {router.pathname == elem.href ? (
-                <div className="py-1 w-fit px-1 mx-auto  bg-light-green rounded-lg"></div>
+                <div className="py-1 w-fit px-2 mx-auto  bg-light-green rounded-lg"></div>
               ) : (
                 <></>
               )}
             </Link>
           ))}
 
-          <div className="ml-5 ">
+          <div className="mx-6">
             <Link href="/singup">
               <button className="btn-green">Sign Up</button>
             </Link>

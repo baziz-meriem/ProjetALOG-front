@@ -44,13 +44,6 @@ const DashboardLayout = ({ children }) => {
             : ""
         }`}
       >
-        <Image
-          src="/images/rFlowers.png"
-          width={310}
-          height="100"
-          alt="exaview logo"
-          className="absolute -top-20 right-0"
-        ></Image>
         {children}
       </div>
     </div>

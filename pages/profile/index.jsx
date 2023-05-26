@@ -4,10 +4,10 @@ import Image from "next/image";
 
 const index = () => {
   const [profileData, setProfile] = useState({
-    nom: "Sahbi",
-    prenom: "Ouael Nedjem eddine",
-    email: "jo_sahbi@esi.dz",
-    numTel: "0795951519",
+    nom: "Baziz",
+    prenom: "Meriem",
+    email: "jm_baziz@esi.dz",
+    numTel: "0556230587",
   });
 
   const handleChange = (e) => {
@@ -21,7 +21,7 @@ const index = () => {
           <div className="space-y-10 mt-16 ">
             <div className="flex items-center justify-center rounded-full overflow-hidden relative w-48 h-48 mx-auto">
               <Image
-                src="/images/user.png"
+                src="/images/user.jpg"
                 width={200}
                 height="100"
                 alt="user image"

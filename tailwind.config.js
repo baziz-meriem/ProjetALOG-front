@@ -11,13 +11,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "light-green": "#84C2AD",
-        "dark-green": "#5F9B85",
-        "darker-green":"#4B7F6A",
+        "light-green": "#A27B5C",
+        "dark-green": "#312509",
+        "darker-green":"#312509",
         "creem-green": "#F2F8F2",
         "grey":"#A8A8A8",
         "light-grey":"#F2F8F2",
-        "cream-grey" : "#D9D9D9"
+        "cream-grey" : "##FCECC9"
       },
       boxShadow: {
         'all': '0 0,0 0 1em rgba(0, 0, 0, 0.14)',

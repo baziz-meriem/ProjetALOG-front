@@ -24,12 +24,6 @@ const PageHeader = ({ title, description }) => {
       <div className="flex">
         <FontAwesomeIcon icon={faBell} className="text-2xl mx-4 mt-2" />
         <Link href='/profile' className=" w-10 h-10 rounded-full relative overflow-hidden">
-          <Image
-            src="/images/user.png"
-            width={100}
-            height="100"
-            alt="exaview logo"
-          ></Image>
         </Link>
 
         <FontAwesomeIcon

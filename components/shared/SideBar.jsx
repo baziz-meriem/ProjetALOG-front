@@ -34,18 +34,6 @@ const SideBar = () => {
       icon: faUsers,
     },
     {
-      id: 4,
-      name: "Nos distributeurs",
-      link: "/listes/Distributeurs/AC",
-      icon: faHardDrive,
-    },
-    {
-      id: 7,
-      name: "Annonces",
-      link: "/listes/Annonceur",
-      icon: faRectangleAd,
-    },
-    {
       id: 5,
       name: "Mon profil",
       link: "/profile",
@@ -55,20 +43,7 @@ const SideBar = () => {
   return (
     <div className="px-5 py-14">
       <div className="flex justify-between px-5">
-        <Image
-          src="/icons/whiteham.png"
-          width={30}
-          height="10"
-          alt="exaview logo"
-          className="w-8 h-5 mt-2 cursor-pointer"
-        ></Image>
-        <Image
-          src="/logos/whitelogo.png"
-          width={40}
-          height="100"
-          alt="exaview logo"
-          className="w-10 h-10 cursor-pointer"
-        ></Image>
+
       </div>
       <div className="mt-10">
         {Links.map((link, key) => (
