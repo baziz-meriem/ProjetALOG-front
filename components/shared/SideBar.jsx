@@ -16,12 +16,6 @@ const SideBar = () => {
   const router = useRouter();
   const Links = [
     {
-      id: 1,
-      name: "Dashbord",
-      link: "/dashboard",
-      icon: faHome,
-    },
-    {
       id: 2,
       name: "Notifications",
       link: "/notifications",

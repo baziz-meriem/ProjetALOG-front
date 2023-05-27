@@ -30,13 +30,12 @@ const createAC = () => {
     console.log(data);
     axios
       .post(
-        "https://sitandlipapi.onrender.com/api/v1/profileManagement/ac",
+        "http://localhost:8080/api/v1/profileManagement/ac",
         data
       )
       .then((res) => {
         console.log(res);
         if (res.status === 201) {
-          console.log("AM inserted");
           toast.success("Ac Created Succesfully!");
           router.push("/listes/AC");
         } else {

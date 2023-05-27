@@ -1,5 +1,4 @@
 import PageHeader from "@/components/shared/PageHeader";
-import ListHeader from "@/components/lists/ListHeader";
 import ListRow from "@/components/lists/ListRow";
 import Link from "next/link";
 import { useState } from "react";
@@ -20,7 +19,6 @@ const ListAC = ({AC}) => {
         />
       </div>
       <div className="flex-auto  p-6 mt-6 shadow-all rounded-lg bg-transparent">
-        <ListHeader title="Clients" />
         {AC.data.length > 0 ? (
           <>
             <ListRow
@@ -30,13 +28,13 @@ const ListAC = ({AC}) => {
               toAdd=""
             />
             {AC.data.map((rowData) => (
-              <Link href={`/listes/AC/${rowData.id}`}>
+  
                 <ListRow
                   key={rowData.id}
                   data={rowData}
                   numColumns="5"
                 />
-              </Link>
+         
             ))}
           </>
         ) : (
@@ -51,7 +49,7 @@ export default ListAC;
 
 export async function getServerSideProps() {
     const data = await fetch(
-      "https://sitandlipapi.onrender.com/api/v1/profileManagement/AC"
+      "http://localhost:8080/api/v1/profileManagement/AC"
     );
     const AC = await data.json();
     return { props: { AC } };
