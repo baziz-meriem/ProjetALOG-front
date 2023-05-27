@@ -1,5 +1,5 @@
 import PageHeader from "@/components/shared/PageHeader";
-import Card from "@/components/dashboard/Card";
+import Card from "@/components/lists/Card";
 const gestionComptes = ({nbAC}) => {
   return (
     <div>
