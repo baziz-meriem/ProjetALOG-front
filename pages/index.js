@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
 import NavBar from "@/components/shared/NavMenu";
 import Header from "@/components/homePage/Header";
 import Footer from "@/components/shared/Footer";

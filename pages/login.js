@@ -6,14 +6,14 @@ const login = () => {
     <div className="h-screen w-full relative overflow-hidden">
       <NavBar />
       <Image
-        src="/images/lFlowers.png"
-        width={350}
-        height="100"
+        src="/icons/coffee-left 1.svg"
+        width={280}
+        height="200"
         alt="exaview logo"
-        className="absolute -top-10 -left-10"
+        className="absolute top-0 -left-1"
       ></Image>
       <Image
-        src="/images/rFlowers.png"
+        src="/icons/coffee-right.svg"
         width={310}
         height="100"
         alt="exaview logo"
