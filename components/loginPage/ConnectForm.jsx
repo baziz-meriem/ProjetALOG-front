@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import {faEnvelope, faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
-import Link from "next/link";
-import {getRole, login } from "@/services/authService";
+import {login } from "@/services/authService";
 import { ToastContainer, toast } from "react-toastify";
 import Cookies from "js-cookie";
 import { useRouter } from "next/router";
@@ -24,16 +23,13 @@ const ConnectForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await getRole(email);
-      const response = await login(email, password, data.role);
-      console.log(response.data);
+      const response = await login(email, password, "AC");
       if (response.data.success) {
         let user = {
           id: response.data.user.id,
           role: response.data.role,
           token: response.data.token,
           name: response.data.user.nom ,
-          idClient : response.data.user.idClient
         };
         // set the cookie
         Cookies.set("user", JSON.stringify(user), { expires: 7, path: "/" });

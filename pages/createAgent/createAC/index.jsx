@@ -14,7 +14,7 @@ const createAC = () => {
       if (cookieValue) {
         console.log(JSON.parse(cookieValue))
         setUser(JSON.parse(cookieValue));
-        setData({...data , "idClient" : JSON.parse(cookieValue).idClient})
+        setData({...data })
       }
     }
   });
@@ -23,8 +23,7 @@ const createAC = () => {
     prenom: "true",
     email: "user@gmail.com",
     numTel: "1234567891",
-    idClient: 1,
-    password: "1234567891",
+    password: "password",
   });
   const handleSubmit = () => {
     console.log(data);
